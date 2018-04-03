@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'select.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -18,17 +20,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
   </head>
   
   <body>
-  		<center>
-   		<a href="add.jsp">add user</a>
-   		<br>
-   		<a href="DeleteServlet">delete user</a>
-   		<br>
-   		<a href="update.jsp">update user</a>
-   		<br>
-   		<a href="ListServlet">select user</a>
-   		</center>
+    <table border="1xp" width="300px" height="300px">
+  <tr>
+  	<td>sno</td>
+  	<td>name</td>
+  	<td>password</td>
+  	<td>操作</td>
+  </tr>
+   
+  <c:forEach var="user" items="${list}" >
+  <tr>
+  	<td>${user.sno}</td>
+  	<td>${user.name}</td>
+  	<td>${user.password}</td>
+  	<td><a href="DeleteServlet?sno=${user.sno}">删除</a></td>
+  </tr>
+  </c:forEach>
+  
+  </table>
+ <a href="index.jsp">返回首页</a>  
   </body>
 </html>
