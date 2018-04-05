@@ -104,23 +104,23 @@ table tr td {
 		<div>
 			<img alt="" src="img/r-bg.jpg">
 			<div class="a6">
-				<form action="" method="get">
+				<form action="LoginServlet" method="post">
 					<table>
 						<tr>
 							<td style="text-align: right;">登录名</td>
-							<td style="text-align: left;"><input size="20"></td>
+							<td style="text-align: left;"><input size="20"  name="uname"></td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">密&nbsp;码</td>
-							<td style="text-align: left;"><input type="password" size="20"></td>
+							<td style="text-align: left;"><input type="password" size="20"  name="upwd"></td>
 						</tr>
 						<tr>
 							<td style="text-align: right;"></td>
-							<td style="text-align: left;"><input type="radio">30天内自动登录</td>
+							<td style="text-align: left;"><input type="radio" name="unLogin">30天内自动登录</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;"></td>
-							<td style="text-align: left;"><img alt="" src="img/login-b.jpg"></td>
+							<td style="text-align: left;"><input type="submit" src="img/login-b.jpg"></td>
 						</tr>
 					</table>
 				</form>
