@@ -112,11 +112,11 @@ table tr td {
 						</tr>
 						<tr>
 							<td style="text-align: right;">密&nbsp;码</td>
-							<td style="text-align: left;"><input type="password" size="20"  name="upwd"></td>
+							<td style="text-align: left;"><input type="text" size="20"  name="upwd"></td>
 						</tr>
 						<tr>
 							<td style="text-align: right;"></td>
-							<td style="text-align: left;"><input type="radio" name="unLogin">30天内自动登录</td>
+							<td style="text-align: left;"><input type="checkbox" value="unLogin" name="unLogin">30天内自动登录</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;"></td>

@@ -43,7 +43,6 @@ public class LoginServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		doPost(request, response);
 	}
 
 	/**
@@ -58,43 +57,58 @@ public class LoginServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		String uname=request.getParameter("uname");
 		String upwd=request.getParameter("upwd");
-		String radio =request.getParameter("unLogin");
+		String[] radio =request.getParameterValues("unLogin");
 		Cookie []cookies=request.getCookies();
 		Login lg=new LoginImpl();
 		boolean success=lg.login(uname, upwd);
-		if(cookies!=null&&cookies.length>0){
+		
+		if(cookies!=null&&cookies.length>1){
 			//通过存储在本地的cookies，获取cookie的值，获取应用域中的session对象
+			System.out.println(cookies.length);
 			for (Cookie cookie : cookies) {
 				if(cookie.getName().equals("LoginSession")){
-					HttpSession session=(HttpSession) request.getServletContext().getAttribute(cookie.getValue());
+					/*HttpSession session=(HttpSession) request.getServletContext().getAttribute(cookie.getValue());*/
+					HttpSession session=(HttpSession) request.getSession();
 					uname=(String) session.getAttribute("uname");
 					upwd=(String) session.getAttribute("upwd");
 					if(success){
+						System.out.println(success);
 						request.getRequestDispatcher("home.jsp").forward(request, response);
 					}
 				}
 			}
+		}else{
+			if(cookies.length<=1&&radio!=null){
+				if(success){
+					System.out.println("创建session");
+					//创建session  
+					HttpSession session=request.getSession();
+					session.setMaxInactiveInterval(259200);
+				    //向session中存储用户信息
+				    session.setAttribute("uname", uname);  
+				    session.setAttribute("upwd", upwd);
+				    //创建一个cookie用于保存sessionid  	
+				    Cookie cookie = new Cookie("LoginSession", session.getId());  
+				    //设置cookie的有效时间 30天
+				    cookie.setMaxAge(60*60*24*30);
+				    response.addCookie(cookie); 
+				    //此时需要在应用域中添加一个属性，用于储存用户的sessionid和对应的session关系  
+				    //以保证后面可以根据sessionid获取到session  
+				    /*request.getServletContext().setAttribute(session.getId(), session);  */
+				    request.getRequestDispatcher("home.jsp").forward(request, response);
+				}
+			}else{
+				System.out.println("没勾选按钮");
+				request.getRequestDispatcher("home.jsp").forward(request, response);
+			}
 		}
-		if(success&&radio!=null){
-			//创建session  
-			HttpSession session=request.getSession();  
-		    //向session中存储用户信息
-		    session.setAttribute("uname", uname);  
-		    session.setAttribute("upwd", upwd);
-		    //创建一个cookie用于保存sessionid  	
-		    Cookie cookie = new Cookie("LoginSession", session.getId());  
-		    //设置cookie的有效时间 30天
-		    cookie.setMaxAge(60*60*24*30);
-		    response.addCookie(cookie); 
-		    //此时需要在应用域中添加一个属性，用于储存用户的sessionid和对应的session关系  
-		    //以保证后面可以根据sessionid获取到session  
-		    request.getServletContext().setAttribute(session.getId(), session);  
-		    response.sendRedirect("home.jsp");
-		}else if(success){
-			
-			response.sendRedirect("home.jsp");
+		if(success!=true){
+			System.out.println(success);
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}
 

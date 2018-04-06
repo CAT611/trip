@@ -9,10 +9,10 @@ import java.sql.SQLException;
 import javax.naming.spi.DirStateFactory.Result;
 
 public class BaseDao {
-	private static final String DRIVER="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	private static final String URL="jdbc:sqlserver://localhost:1433;DataBaseName=stu";
-	private static final String USER="sa";
-	private static final String PASSWORD="sa";
+	private static final String DRIVER="com.mysql.jdbc.Driver";
+	private static final String URL="jdbc:mysql://localhost:3306/big?useUnicode=true&characterEncoding=utf-8";
+	private static final String USER="root";
+	private static final String PASSWORD="1234";
 	
 	public static Connection getConnection(){
 		Connection conn=null;

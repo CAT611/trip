@@ -118,15 +118,15 @@ body {
 	<div class="a5">
 		<div class="a6">会员注册</div>
 		<div class="a7">
-			<form action="index.html" method="get">
+			<form action="RegisterServlet" method="post">
 				<table>
 					<tr>
 						<td style="text-align: right;">用户账号</td>
-						<td><input></td>
+						<td><input name="uname"></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">设置密码</td>
-						<td><input></td>
+						<td><input name="upwd"></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">确认密码</td>
@@ -155,7 +155,7 @@ body {
 					</tr>
 					<tr>
 						<td style="text-align: right;"></td>
-						<td><input type="image" src="img/but2.jpg"></td>
+						<td><input type="submit" src="img/but2.jpg"></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;"></td>
@@ -169,7 +169,7 @@ body {
 					<img alt="" src="img/kf.jpg">
 				</div>
 				<div class="a9">
-					<a href="logo.html">已有账户，请点击登录</a>
+					<a href="login.jsp">已有账户，请点击登录</a>
 				</div>
 			</div>
 		</div>

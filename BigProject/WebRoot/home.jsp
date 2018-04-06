@@ -37,7 +37,10 @@ font {
 a:hover {
 	color: red;
 }
-
+a {
+	text-decoration:none;
+	color:black;
+}
 body {
 	margin: 0 auto;
 }
@@ -206,16 +209,16 @@ body {
 		<div class="a3">
 			<div class="a4">
 				<ul>
-					<li>首页</li>
+					<li><a href="home.jsp">首页</a></li>
 					<li><img src="img/t1.jpg"></li>
-					<li>境外游</li>
+					<li><a href="outside.jsp">境外游</a></li>
 					<li><img src="img/t1.jpg"></li>
-					<li>境内游</li>
+					<li><a href="inside.jsp">境内游</a></li>
 					<li><img src="img/t1.jpg"></li>
-					<li>热门游</li>
+					<li><a>热门游</a></li>
 					<li><img src="img/t1.jpg"></li>
-					<li>团购</li>
-					<li><img alt="" src="img/che.jpg"></li>
+					<li><a href="GroupShopping.jsp">团购</a></li>
+					<li><a href="che.jsp"><img alt="" src="img/che.jpg"></a></li>
 				</ul>
 			</div>
 		</div>
@@ -308,7 +311,8 @@ body {
 				<img alt="" src="img/tg4.jpg">
 			</div>
 			<div class="a7">
-				<img alt="" src="img/dl.jpg"> <img alt="" src="img/zc.jpg">
+				<a href="login.jsp"><img alt="" src="img/dl.jpg"></a>
+				<a href="register.jsp"><img alt="" src="img/zc.jpg"></a>
 			</div>
 			<div class="a8">
 				<font>96%</font>滿意度 <br> 已有 <font>2596874</font>人预定出游

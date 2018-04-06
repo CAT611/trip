@@ -195,7 +195,9 @@ tr {
 			<br>
 			<br>
 			<div align="right">
+				<a href="order.jsp">
 				<img alt="" src="img/js.jpg">
+				</a>
 			</div>
 		</div>
 	</div>
