@@ -64,17 +64,19 @@ public class LoginServlet extends HttpServlet {
 		String[] radio =request.getParameterValues("unLogin");
 		Cookie []cookies=request.getCookies();
 		Login lg=new LoginImpl();
+		System.out.println("uname"+uname+"upwd"+upwd);
 		boolean success=lg.login(uname, upwd);
-		
+		System.out.println(success);
 		if(cookies!=null&&cookies.length>1){
 			//通过存储在本地的cookies，获取cookie的值，获取应用域中的session对象
 			System.out.println(cookies.length);
 			for (Cookie cookie : cookies) {
-				if(cookie.getName().equals("LoginSession")){
+				if(cookie.getName().equals("JSESSIONID")){
 					/*HttpSession session=(HttpSession) request.getServletContext().getAttribute(cookie.getValue());*/
 					HttpSession session=(HttpSession) request.getSession();
 					uname=(String) session.getAttribute("uname");
 					upwd=(String) session.getAttribute("upwd");
+					System.out.println("uname"+uname+"upwd"+upwd);
 					if(success){
 						System.out.println(success);
 						request.getRequestDispatcher("home.jsp").forward(request, response);
@@ -92,18 +94,21 @@ public class LoginServlet extends HttpServlet {
 				    session.setAttribute("uname", uname);  
 				    session.setAttribute("upwd", upwd);
 				    //创建一个cookie用于保存sessionid  	
-				    Cookie cookie = new Cookie("LoginSession", session.getId());  
+				    Cookie cookie = new Cookie("JSESSIONID", session.getId());
 				    //设置cookie的有效时间 30天
-				    cookie.setMaxAge(60*60*24*30);
+				    cookie.setMaxAge(session.getMaxInactiveInterval());
+				    cookie.setPath(this.getServletContext().getContextPath());
 				    response.addCookie(cookie); 
 				    //此时需要在应用域中添加一个属性，用于储存用户的sessionid和对应的session关系  
 				    //以保证后面可以根据sessionid获取到session  
-				    /*request.getServletContext().setAttribute(session.getId(), session);  */
+				    request.getServletContext().setAttribute(session.getId(), session);  
 				    request.getRequestDispatcher("home.jsp").forward(request, response);
 				}
 			}else{
-				System.out.println("没勾选按钮");
-				request.getRequestDispatcher("home.jsp").forward(request, response);
+				if(success){
+					System.out.println("没勾选按钮");
+					request.getRequestDispatcher("home.jsp").forward(request, response);
+				}
 			}
 		}
 		if(success!=true){
