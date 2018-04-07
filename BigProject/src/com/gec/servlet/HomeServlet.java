@@ -2,22 +2,23 @@ package com.gec.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.gec.entiy.Users;
-import com.gec.services.Login;
-import com.gec.services.impl.LoginImpl;
+import com.gec.entiy.Sight;
+import com.gec.services.SightProduct;
+import com.gec.services.impl.SightProductImpl;
 
-public class RegisterServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public RegisterServlet() {
+	public HomeServlet() {
 		super();
 	}
 
@@ -57,20 +58,33 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//设置请求字符为utf-8
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String uname=request.getParameter("uname");
-		String upwd=request.getParameter("upwd");
-		Users user=new Users();
-		user.setUname(uname);
-		user.setUpwd(upwd);
-		Login register=new LoginImpl();
-		boolean flag=register.register(user);
-		if(flag){
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-		}else{
-			request.getRequestDispatcher("register.jsp").forward(request, response);
-		}
+		SightProduct sp=new SightProductImpl();
+		//旅游产品分类：境外游
+		List<Sight> listInside=sp.Top6Product(1);
+		request.setAttribute("listInside", listInside);
+		//旅游产品分类：境外游
+		List<Sight> listOutside=sp.Top6Product(2);
+		request.setAttribute("listOutside", listOutside);
+		//旅游产品分类：海島游
+		List<Sight> listIslands=sp.Top6Product(3);
+		request.setAttribute("listIslands", listIslands);
+		//旅游产品分类：自驾游
+		List<Sight> listByself=sp.Top6Product(4);
+		request.setAttribute("listByself", listByself);
+		//几日游 1日游
+		List<Sight> listOne=sp.Top8Product(5);
+		request.setAttribute("listOne", listOne);
+		//几日游 2日游
+		List<Sight> listTwo=sp.Top8Product(6);
+		request.setAttribute("listTwo", listTwo);
+		//几日游 3日游
+		List<Sight> listThree=sp.Top8Product(7);
+		request.setAttribute("listThree", listThree);
+		
+		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 
 	/**

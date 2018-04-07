@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.gec.entiy.Users;
-import com.gec.services.Login;
-import com.gec.services.impl.LoginImpl;
+import com.gec.entiy.Groupon;
+import com.gec.services.Group;
+import com.gec.services.impl.GroupImpl;
 
-public class RegisterServlet extends HttpServlet {
+public class DetialsServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public RegisterServlet() {
+	public DetialsServlet() {
 		super();
 	}
 
@@ -41,7 +41,6 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		doPost(request, response);
 	}
 
@@ -59,18 +58,11 @@ public class RegisterServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String uname=request.getParameter("uname");
-		String upwd=request.getParameter("upwd");
-		Users user=new Users();
-		user.setUname(uname);
-		user.setUpwd(upwd);
-		Login register=new LoginImpl();
-		boolean flag=register.register(user);
-		if(flag){
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-		}else{
-			request.getRequestDispatcher("register.jsp").forward(request, response);
-		}
+		String sname = new String(request.getParameter("sname").getBytes("ISO-8859-1"), "UTF-8"); 
+		Group gp=new GroupImpl();
+		Groupon group=gp.selectDetails(sname);
+		request.setAttribute("group", group);
+		request.getRequestDispatcher("details.jsp").forward(request,response);
 	}
 
 	/**

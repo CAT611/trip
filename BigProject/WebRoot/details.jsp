@@ -96,16 +96,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<form action="">
 							<table>
 								<tr>
-									<td>涂乐行价：2988</td>
+									<td>涂乐行价：${group.oldPrice}</td>
 								</tr>
 								<tr>
-									<td>团购价：2888</td>
+									<td>团购价：${group.gprice}</td>
 								</tr>
 								<tr>
-									<td>最大优惠：100</td>
+									<td>最大优惠：${group.oldPrice-group.gprice}</td>
 								</tr>
 								<tr>
-									<td>出游天数：5天</td>
+									<td>出游天数：${group.gday}天</td>
 								</tr>
 								<tr>
 									<td>出游人数：已有0人出游此路线</td>
@@ -116,8 +116,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</table>
 						</form>
 						<div>
-							<br> <br> <img alt="" src="img/jgwc.jpg"> <img
-								alt="" src="img/js.jpg">
+							<br> <br> 
+							<a href="che.jsp"><img alt="" src="img/jgwc.jpg" ></a>
+							<a href="order.jsp"><img alt="" src="img/js.jpg"></a>
 						</div>
 					</div>
 

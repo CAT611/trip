@@ -17,12 +17,35 @@ public class SightDaoImpl extends BaseDao implements SightDao {
 	ResultSet res=null;
 	String sql="";
 	@Override
-	public List<Sight> top6inside() {
+	public List<Sight> top6(int tid) {
 		List<Sight> list =new ArrayList<Sight>();
-		sql="SELECT * from sight where tid=1 ORDER BY sid LIMIT 6 ";
+		sql="SELECT * from sight where tid=? ORDER BY sid LIMIT 6 ";
 		conn=super.getConnection();
 		try {
 			stmt=conn.prepareStatement(sql);
+			stmt.setInt(1,tid);
+			res=stmt.executeQuery();
+			while(res.next()){
+				Sight s=new Sight();
+				s.setSname(res.getString("sname"));
+				list.add(s);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			closeAll(conn, res, stmt);
+		}
+		return list;
+	}
+	@Override
+	public List<Sight> top8(int tid) {
+		List<Sight> list =new ArrayList<Sight>();
+		sql="SELECT * from sight where tid=? ORDER BY sid LIMIT 8 ";
+		conn=super.getConnection();
+		try {
+			stmt=conn.prepareStatement(sql);
+			stmt.setInt(1,tid);
 			res=stmt.executeQuery();
 			while(res.next()){
 				Sight s=new Sight();

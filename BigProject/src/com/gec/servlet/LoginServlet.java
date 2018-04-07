@@ -16,6 +16,11 @@ import com.gec.services.impl.LoginImpl;
 public class LoginServlet extends HttpServlet {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Constructor of the object.
 	 */
 	public LoginServlet() {
@@ -79,7 +84,8 @@ public class LoginServlet extends HttpServlet {
 					System.out.println("uname"+uname+"upwd"+upwd);
 					if(success){
 						System.out.println(success);
-						request.getRequestDispatcher("home.jsp").forward(request, response);
+						request.getRequestDispatcher("HomeServlet").forward(request, response);
+						return ;
 					}
 				}
 			}
@@ -102,12 +108,13 @@ public class LoginServlet extends HttpServlet {
 				    //此时需要在应用域中添加一个属性，用于储存用户的sessionid和对应的session关系  
 				    //以保证后面可以根据sessionid获取到session  
 				    request.getServletContext().setAttribute(session.getId(), session);  
-				    request.getRequestDispatcher("home.jsp").forward(request, response);
+				    request.getRequestDispatcher("HomeServlet").forward(request, response);
+				    return ;
 				}
 			}else{
 				if(success){
 					System.out.println("没勾选按钮");
-					request.getRequestDispatcher("home.jsp").forward(request, response);
+					request.getRequestDispatcher("HomeServlet").forward(request, response);
 				}
 			}
 		}
