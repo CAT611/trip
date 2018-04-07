@@ -52,7 +52,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 }
 </style>
 </head>
-
+<!-- <script type="text/javascript">
+	$(function(){
+			$("#che").click(function(){
+				$("#che").submit();
+			});
+			$("#order").click(function(){
+				$("#order").submit();
+			});
+	});
+</script> -->
 <body>
 	<div class="a1">
 		<div class="a2">
@@ -93,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div>
 					<img alt="" src="img/fhgc.jpg" width="430px" height="270px">
 					<div class="a8">
-						<form action="">
+						<form action="CartServlet" method="post">
 							<table>
 								<tr>
 									<td>涂乐行价：${group.oldPrice}</td>
@@ -114,12 +123,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<td>提前报名：建议提前一天报名</td>
 								</tr>
 							</table>
-						</form>
 						<div>
 							<br> <br> 
-							<a href="che.jsp"><img alt="" src="img/jgwc.jpg" ></a>
-							<a href="order.jsp"><img alt="" src="img/js.jpg"></a>
+							<input type="submit" value="" name="che" style="background-image: url('img/jgwc.jpg'); width:123px;height: 43px">
+							<input type="submit" value="" name="order" style="background-image: url('img/js.jpg');width:123px;height: 43px;">
 						</div>
+						</form>
 					</div>
 
 				</div>

@@ -14,14 +14,14 @@ public class UsersDaoImpl extends BaseDao implements UsersDao {
 	PreparedStatement stmt=null;
 	String sql="";
 	@Override//µÇÂ¼ÑéÖ¤
-	public boolean login(String uname, String upwd) {
+	public boolean login(int  uid, String upwd) {
 		Connection conn = null;
 		boolean flag=false;
-		sql = "select  * from users where uname=? and upwd=?";
+		sql = "select  * from users where uid=? and upwd=?";
 		conn=super.getConnection();
 		try {
 			stmt=conn.prepareStatement(sql);
-			stmt.setString(1, uname);
+			stmt.setInt(1, uid);
 			stmt.setString(2, upwd);
 			res=stmt.executeQuery();
 			if(res.next()){
