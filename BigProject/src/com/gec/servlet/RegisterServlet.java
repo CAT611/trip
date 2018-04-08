@@ -61,12 +61,19 @@ public class RegisterServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		String uname=request.getParameter("uname");
 		String upwd=request.getParameter("upwd");
+		String uphone=request.getParameter("uphone");
+		String ucard=request.getParameter("ucard");
+		String usex=request.getParameter("sex");
 		Users user=new Users();
 		user.setUname(uname);
 		user.setUpwd(upwd);
+		user.setUcard(ucard);
+		user.setUsex(usex);
+		user.setUphone(uphone);
 		Login register=new LoginImpl();
 		boolean flag=register.register(user);
-		if(flag){
+		String rule=request.getParameter("rule");
+		if(flag&&rule!=null){
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}else{
 			request.getRequestDispatcher("register.jsp").forward(request, response);

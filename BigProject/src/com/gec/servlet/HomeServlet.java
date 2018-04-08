@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.gec.entiy.Sight;
+import com.gec.services.Login;
 import com.gec.services.SightProduct;
+import com.gec.services.impl.LoginImpl;
 import com.gec.services.impl.SightProductImpl;
 
 public class HomeServlet extends HttpServlet {
@@ -61,6 +63,9 @@ public class HomeServlet extends HttpServlet {
 		//设置请求字符为utf-8
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
+		Login lo=new LoginImpl();
+		int uid=lo.nextID();
+		request.setAttribute("uid", uid);
 		SightProduct sp=new SightProductImpl();
 		//旅游产品分类：境外游
 		List<Sight> listInside=sp.Top6Product(1);

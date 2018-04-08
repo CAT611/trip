@@ -122,7 +122,7 @@ body {
 				<table>
 					<tr>
 						<td style="text-align: right;">用户账号</td>
-						<td><input name="uname"></td>
+						<td><input name="uid" value="${param.uid}"></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">设置密码</td>
@@ -130,24 +130,24 @@ body {
 					</tr>
 					<tr>
 						<td style="text-align: right;">确认密码</td>
-						<td><input></td>
+						<td><input name="newPwd"></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">用户姓名</td>
-						<td><input></td>
+						<td><input name="uname"></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">身份证号</td>
-						<td><input></td>
+						<td><input name="ucard"></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">性别</td>
-						<td><input type="radio" name="sex" checked="checked">男<input
-							type="radio" name="sex"> 女</td>
+						<td><input type="radio" value="男" name="sex" checked="checked">男<input
+							type="radio" value="女" name="sex"> 女</td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">手机号码</td>
-						<td><input></td>
+						<td><input name="uphone"></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">校验码</td>
@@ -159,7 +159,7 @@ body {
 					</tr>
 					<tr>
 						<td style="text-align: right;"></td>
-						<td><input type="radio"><a href="rule.html">涂乐行旅游服务会员条款</a>
+						<td><input type="radio" name="rule"><a href="rule.html">涂乐行旅游服务会员条款</a>
 						</td>
 					</tr>
 				</table>

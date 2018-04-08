@@ -39,12 +39,15 @@ public class UsersDaoImpl extends BaseDao implements UsersDao {
 	public boolean addUsers(Users user) {
 		Connection conn=null;
 		boolean flag=false;
-		sql="insert users (uname,upwd,tid) values (?,?,1)";
+		sql="insert users (uname,upwd,ucard,uphone,usex,tid) values (?,?,?,?,?,1)";
 		conn=super.getConnection();
 		try {
 			stmt=conn.prepareStatement(sql);
 			stmt.setString(1, user.getUname());
 			stmt.setString(2, user.getUpwd());
+			stmt.setString(3, user.getUcard());
+			stmt.setString(4, user.getUphone());
+			stmt.setString(5, user.getUsex());
 			int a=stmt.executeUpdate();
 			if(a>0){
 				flag=true;
@@ -56,6 +59,26 @@ public class UsersDaoImpl extends BaseDao implements UsersDao {
 			closeAll(conn, res, stmt);
 		}
 		return flag;
+	}
+	@Override
+	public int nextId() {
+		Connection conn=null;
+		int uid=0;
+		sql="SELECT Auto_increment FROM information_schema . `TABLES` WHERE Table_Schema='big' AND table_name = 'users' limit 1;";
+		conn=super.getConnection();
+		try {
+			stmt=conn.prepareStatement(sql);
+			res=stmt.executeQuery();
+			if(res.next()){
+				uid=res.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			closeAll(conn, res, stmt);
+		}
+		return uid;
 	}
 
 }

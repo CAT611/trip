@@ -64,14 +64,12 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String uname=request.getParameter("uname");
+		int uid=Integer.parseInt( request.getParameter("uname"));
 		String upwd=request.getParameter("upwd");
 		String[] radio =request.getParameterValues("unLogin");
 		Cookie []cookies=request.getCookies();
 		Login lg=new LoginImpl();
-		System.out.println("uname"+uname+"upwd"+upwd);
-		boolean success=lg.login(uname, upwd);
-		System.out.println(success);
+		boolean success=lg.login(uid, upwd);
 		if(cookies!=null&&cookies.length>1){
 			//通过存储在本地的cookies，获取cookie的值，获取应用域中的session对象
 			System.out.println(cookies.length);
@@ -79,9 +77,9 @@ public class LoginServlet extends HttpServlet {
 				if(cookie.getName().equals("JSESSIONID")){
 					/*HttpSession session=(HttpSession) request.getServletContext().getAttribute(cookie.getValue());*/
 					HttpSession session=(HttpSession) request.getSession();
-					uname=(String) session.getAttribute("uname");
+					uid=Integer.parseInt((String) session.getAttribute("uid"));
 					upwd=(String) session.getAttribute("upwd");
-					System.out.println("uname"+uname+"upwd"+upwd);
+					System.out.println("uname"+uid+"upwd"+upwd);
 					if(success){
 						System.out.println(success);
 						request.getRequestDispatcher("HomeServlet").forward(request, response);
@@ -89,15 +87,14 @@ public class LoginServlet extends HttpServlet {
 					}
 				}
 			}
-		}else{
-			if(cookies.length<=1&&radio!=null){
+		}else if(cookies.length<=1&&radio!=null){
 				if(success){
 					System.out.println("创建session");
 					//创建session  
 					HttpSession session=request.getSession();
 					session.setMaxInactiveInterval(259200);
 				    //向session中存储用户信息
-				    session.setAttribute("uname", uname);  
+				    session.setAttribute("uname", uid);  
 				    session.setAttribute("upwd", upwd);
 				    //创建一个cookie用于保存sessionid  	
 				    Cookie cookie = new Cookie("JSESSIONID", session.getId());
@@ -111,13 +108,11 @@ public class LoginServlet extends HttpServlet {
 				    request.getRequestDispatcher("HomeServlet").forward(request, response);
 				    return ;
 				}
-			}else{
-				if(success){
+			}else if(success){
 					System.out.println("没勾选按钮");
 					request.getRequestDispatcher("HomeServlet").forward(request, response);
 				}
-			}
-		}
+			
 		if(success!=true){
 			System.out.println(success);
 			request.getRequestDispatcher("login.jsp").forward(request, response);

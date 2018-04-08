@@ -8,15 +8,21 @@ import com.gec.services.Login;
 public class LoginImpl implements Login {
 	UsersDao ud=new UsersDaoImpl();
 	@Override
-	public boolean login(String uname, String upwd) {
+	public boolean login(int uid, String upwd) {
 		// TODO Auto-generated method stub
-		return ud.login(uname, upwd);
+		return ud.login(uid, upwd);
 	}
 
 	@Override
 	public boolean register(Users user) {
 		// TODO Auto-generated method stub
 		return ud.addUsers(user);
+	}
+
+	@Override
+	public int nextID() {
+		// TODO Auto-generated method stub
+		return ud.nextId();
 	}
 
 }
