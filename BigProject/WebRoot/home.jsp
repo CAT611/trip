@@ -312,10 +312,11 @@ body {
 			</div>
 			<div class="a7">
 				<a href="login.jsp"><img alt="" src="img/dl.jpg"></a> <a
-					href="register.jsp?uid=${uid}"><img alt="" src="img/zc.jpg"></a>
+					href="register.jsp?nextID=${nextID}"><img alt="" src="img/zc.jpg"></a>
 			</div>
 			<div class="a8">
 				<font>96%</font>滿意度 <br> 已有 <font>2596874</font>人预定出游
+				欢迎<font>${user.uname}</font>登录
 			</div>
 			<div class="a9">
 				<table class="a10">

@@ -8,14 +8,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.gec.entiy.Sight;
+import com.gec.entiy.Users;
 import com.gec.services.Login;
 import com.gec.services.SightProduct;
 import com.gec.services.impl.LoginImpl;
 import com.gec.services.impl.SightProductImpl;
 
 public class HomeServlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Constructor of the object.
@@ -64,8 +71,9 @@ public class HomeServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		Login lo=new LoginImpl();
-		int uid=lo.nextID();
-		request.setAttribute("uid", uid);
+		//这里的uid是下一个UId；
+		int nextID=lo.nextID();
+		request.setAttribute("nextID", nextID);
 		SightProduct sp=new SightProductImpl();
 		//旅游产品分类：境外游
 		List<Sight> listInside=sp.Top6Product(1);

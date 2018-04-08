@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.Application;
 
+import com.gec.entiy.Users;
 import com.gec.services.Login;
 import com.gec.services.impl.LoginImpl;
 
@@ -70,6 +71,8 @@ public class LoginServlet extends HttpServlet {
 		Cookie []cookies=request.getCookies();
 		Login lg=new LoginImpl();
 		boolean success=lg.login(uid, upwd);
+		//通过uid查询用户个人信息
+		Users user=lg.userInfo(uid);
 		if(cookies!=null&&cookies.length>1){
 			//通过存储在本地的cookies，获取cookie的值，获取应用域中的session对象
 			System.out.println(cookies.length);
@@ -81,7 +84,6 @@ public class LoginServlet extends HttpServlet {
 					upwd=(String) session.getAttribute("upwd");
 					System.out.println("uname"+uid+"upwd"+upwd);
 					if(success){
-						System.out.println(success);
 						request.getRequestDispatcher("HomeServlet").forward(request, response);
 						return ;
 					}
@@ -96,6 +98,8 @@ public class LoginServlet extends HttpServlet {
 				    //向session中存储用户信息
 				    session.setAttribute("uname", uid);  
 				    session.setAttribute("upwd", upwd);
+					//将用户信息放入session中
+					session.setAttribute("user", user);
 				    //创建一个cookie用于保存sessionid  	
 				    Cookie cookie = new Cookie("JSESSIONID", session.getId());
 				    //设置cookie的有效时间 30天
@@ -109,12 +113,15 @@ public class LoginServlet extends HttpServlet {
 				    return ;
 				}
 			}else if(success){
-					System.out.println("没勾选按钮");
+					System.out.println("普通登录，LoginServlet");
+					//将用户信息放入session中
+					HttpSession session = request.getSession();
+					session.setAttribute("user", user);
 					request.getRequestDispatcher("HomeServlet").forward(request, response);
 				}
 			
 		if(success!=true){
-			System.out.println(success);
+			System.out.println("普通登录，LoginServlet,登录失败返回login.jsp页面");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}

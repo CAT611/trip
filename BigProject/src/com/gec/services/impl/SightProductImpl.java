@@ -8,17 +8,23 @@ import com.gec.entiy.Sight;
 import com.gec.services.SightProduct;
 
 public class SightProductImpl implements SightProduct {
-
+	SightDao sd=new SightDaoImpl();
 	@Override
 	public List<Sight> Top6Product(int tid) {
-		SightDao sd=new SightDaoImpl();
 		return sd.top6(tid);
 	}
 
 	@Override
 	public List<Sight> Top8Product(int tid) {
-		SightDao sd=new SightDaoImpl();
+		
 		return sd.top8(tid);
 	}
+	
+	@Override
+	public Sight sightInfo(String sname) {
+		SightDao sd=new SightDaoImpl();
+		return sd.selectInfo(sname);
+	}
+	
 
 }

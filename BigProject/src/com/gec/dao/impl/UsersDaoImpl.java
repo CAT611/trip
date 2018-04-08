@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.gec.dao.BaseDao;
 import com.gec.dao.UsersDao;
@@ -79,6 +81,33 @@ public class UsersDaoImpl extends BaseDao implements UsersDao {
 			closeAll(conn, res, stmt);
 		}
 		return uid;
+	}
+	@Override
+	public Users selectInfo(int uid) {
+		List<Users> list =new ArrayList<Users>();
+		Connection conn=null;
+		Users user=new Users();
+		sql="select * from users where uid=?";
+		conn=super.getConnection();
+		try {
+			stmt=conn.prepareStatement(sql);
+			stmt.setInt(1, uid);
+			res=stmt.executeQuery();
+			while(res.next()){
+				user.setUid(res.getInt("uid"));
+				user.setUname(res.getString("uname"));
+				user.setUpwd(res.getString("upwd"));
+				user.setUcard(res.getString("ucard"));
+				user.setUphone(res.getString("uphone"));
+				user.setUsex(res.getString("usex"));
+				user.setOid(res.getInt("oid"));
+				user.setTid(res.getInt("tid"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 }

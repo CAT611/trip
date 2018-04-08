@@ -122,7 +122,7 @@ body {
 				<table>
 					<tr>
 						<td style="text-align: right;">用户账号</td>
-						<td><input name="uid" value="${param.uid}"></td>
+						<td><input name="uid" value="${param.nextID}"></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">设置密码</td>

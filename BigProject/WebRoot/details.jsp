@@ -95,12 +95,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				<div>
 					<font color="#009962">【多重优惠+超值赠送】品质全景，张家界，凤凰，天门山，宝峰湖纯玩双飞五日游</font>
-					<img alt="" src="img/tjcp.jpg"> <img alt="" src="img/fk.jpg">
+					<img alt="" src="img/tjcp.jpg">
+					<img alt="" src="img/fk.jpg">
 					<img alt="" src="img/gty.jpg" align="right">
 				</div>
-				<br> <br>
+				<br>
+				<br>
 				<div>
-					<img alt="" src="img/fhgc.jpg" width="430px" height="270px">
+				<!-- 大图展示区 -->
+					<img alt="" src="${gphoto[0]}" width="430px" height="270px">
 					<div class="a8">
 						<form action="CartServlet" method="post">
 							<table>
@@ -133,12 +136,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				</div>
 				<br>
-
 				<!-- 展示栏 -->
 				<div>
-					<img alt="" src="img/jdcks1.jpg" width="135px" height="85px">
-					<img alt="" src="img/jdcks2.jpg" width="135px" height="85px">
-					<img alt="" src="img/jdcks3.jpg" width="135px" height="85px">
+					<img alt="" src="${gphoto[1]}" width="135px" height="85px">
+					<img alt="" src="${gphoto[2]}" width="135px" height="85px">
+					<img alt="" src="${gphoto[3]}" width="135px" height="85px">
 				</div>
 				<!-- 推荐理由  特别优惠-->
 				<div>

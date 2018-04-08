@@ -25,4 +25,10 @@ public class LoginImpl implements Login {
 		return ud.nextId();
 	}
 
+	@Override
+	public Users userInfo(int uid) {
+		// TODO Auto-generated method stub
+		return ud.selectInfo(uid);
+	}
+
 }

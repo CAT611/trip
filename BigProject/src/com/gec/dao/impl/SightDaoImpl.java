@@ -60,5 +60,31 @@ public class SightDaoImpl extends BaseDao implements SightDao {
 		}
 		return list;
 	}
+	@Override
+	public Sight selectInfo(String sname) {
+		Connection conn=null;
+		sql="select * from sight where sname=?";
+		Sight sight =new Sight();
+		conn=super.getConnection();
+		try {
+			stmt=conn.prepareStatement(sql);
+			res=stmt.executeQuery();
+			while(res.next()){
+				sight.setSid(res.getInt(1));
+				sight.setSname(res.getString(2));
+				sight.setSprice(res.getInt(3));
+				sight.setSintro(res.getString(4));
+				sight.setSphoto(res.getString(5));
+				sight.setTid(res.getInt(6));
+				sight.setDid(res.getInt(7));
+				sight.setSday(res.getInt(8));
+				sight.setSway(res.getString(9));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return sight;
+	}
 
 }

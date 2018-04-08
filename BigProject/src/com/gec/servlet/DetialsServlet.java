@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.gec.entiy.Groupon;
+import com.gec.entiy.Sight;
 import com.gec.services.Group;
 import com.gec.services.impl.GroupImpl;
 
@@ -61,6 +62,10 @@ public class DetialsServlet extends HttpServlet {
 		String sname = new String(request.getParameter("sname").getBytes("ISO-8859-1"), "UTF-8"); 
 		Group gp=new GroupImpl();
 		Groupon group=gp.selectDetails(sname);
+		String str=group.getGphoto();
+		String [] gphoto=str.split(",");
+		System.out.println(gphoto[0]+gphoto[1]+gphoto[2]+gphoto[3]);
+		request.setAttribute("gphoto", gphoto);
 		request.setAttribute("group", group);
 		request.getRequestDispatcher("details.jsp").forward(request,response);
 	}
