@@ -67,6 +67,7 @@ public class DetialsServlet extends HttpServlet {
 		System.out.println(gphoto[0]+gphoto[1]+gphoto[2]+gphoto[3]);
 		request.setAttribute("gphoto", gphoto);
 		request.setAttribute("group", group);
+		request.setAttribute("sname", sname);
 		request.getRequestDispatcher("details.jsp").forward(request,response);
 	}
 

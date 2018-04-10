@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -108,16 +108,16 @@ tr {
 	<div class="a3">
 		<div class="a4">
 			<ul>
-				<li>首页</li>
-				<li><img src="img/t1.jpg"></li>
-				<li>境外游</li>
-				<li><img src="img/t1.jpg"></li>
-				<li>境内游</li>
-				<li><img src="img/t1.jpg"></li>
-				<li>热门游</li>
-				<li><img src="img/t1.jpg"></li>
-				<li>团购</li>
-				<li><img alt="" src="img/che.jpg"></li>
+				<li><a href="HomeServlet">首页</a></li>
+					<li><img src="img/t1.jpg"></li>
+					<li><a href="inside.jsp">境外游</a></li>
+					<li><img src="img/t1.jpg"></li>
+					<li><a >境内游</a></li>
+					<li><img src="img/t1.jpg"></li>
+					<li><a >热门游</a></li>
+					<li><img src="img/t1.jpg"></li>
+					<li><a href="outside.jsp">团购</a></li>
+					<li><a href="che.jsp"><img alt="" src="img/che.jpg"></a></li>
 			</ul>
 		</div>
 	</div>
@@ -141,43 +141,21 @@ tr {
 							<td class="a12"><font class="a10">操作</font></td>
 						</tr>
 
+						<c:forEach items="${list}" var="ShoppingCart">
 						<tr>
-							<td class="a14">1</td>
+							<td class="a14">${ShoppingCart.cid}</td>
 							<td class="a15">
 								<div>
-									<img src="img/pic1.jpg" class="a13">
-									产品编号:qwdqqdqdqw线路名：美国一日游【交通工具+火车】
+									<!-- <img src="img/pic1.jpg" class="a13"> -->
+									${ShoppingCart.cname}--
+									${ShoppingCart.cintro}
 								</div>
 							</td>
-							<td class="a16"><font color="#FF0000">$234</font></td>
+							<td class="a16"><font color="#FF0000">${ShoppingCart.cprice}</font></td>
 							<td class="a16"><font class="a10-1">下单</font></td>
 							<td class="a16"></td>
 						</tr>
-						<tr>
-							<td class="a14">2</td>
-							<td class="a15">
-								<div>
-									<img src="img/pic2.png" class="a13">
-									产品编号:qwdqqdqdqw线路名：美国一日游【交通工具+飞机】
-								</div>
-							</td>
-							<td class="a16"><font color="#FF0000">$765</font></td>
-							<td class="a16"><font class="a10-1">下单</font></td>
-							<td class="a16"></td>
-						</tr>
-						<tr>
-							<td class="a14">3</td>
-							<td class="a15">
-								<div>
-									<img src="img/pic3.jpg" class="a13">
-									产品编号:qwdqqdqdqw线路名：美国一日游【交通工具+飞机】
-
-								</div>
-							</td>
-							<td class="a16"><font color="#FF0000">$897</font></td>
-							<td class="a16"><font class="a10-1">下单</font></td>
-							<td class="a16"></td>
-						</tr>
+						</c:forEach>
 					</table>
 				</form>
 			</div>
@@ -189,7 +167,15 @@ tr {
 				<a href="">首页</a> <a href="">上一页</a> <a href="">下一页</a> <a href="">尾页</a>
 			</div>
 			<div style="text-align: right;">
-				<font size="5">应付金额<font color=" red">4784</font>元
+				<font size="5">应付金额<font color=" red">
+				
+				<c:set var="sum" value="0"/>
+				<c:forEach items="${list}" var="ShoppingCart">
+				<%-- <c:set var="sum" value="${sum+=ShoppingCart.cprice}" /> --%>
+				</c:forEach>
+				
+				
+				</font>元
 				</font>
 			</div>
 			<br>
