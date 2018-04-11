@@ -4,6 +4,13 @@ public class Sight {
 
 	private int sid;
 	private String sname;
+	private int soprice;
+	public int getSoprice() {
+		return soprice;
+	}
+	public void setSoprice(int soprice) {
+		this.soprice = soprice;
+	}
 	private int sprice;
 	private String sintro;
 	private String sphoto;

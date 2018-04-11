@@ -215,7 +215,7 @@ body {
 				<ul>
 					<li><a href="HomeServlet">首页</a></li>
 					<li><img src="img/t1.jpg"></li>
-					<li><a href="inside.jsp">境外游</a></li>
+					<li><a href="InsideServlet">境外游</a></li>
 					<li><img src="img/t1.jpg"></li>
 					<li><a href="">境内游</a></li>
 					<li><img src="img/t1.jpg"></li>

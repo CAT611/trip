@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -186,38 +187,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<form action="">
 				<table>
 					<tr>
-						<td><img alt="" src="img/typeact1.jpg" class="a8">
-							<div class="a9">深度镇西南七日游</div>
+						<c:forEach items="${listTop10}" var="sight" begin="0" end="4" >
+							<td><img alt="" src="${sight.sphoto}" class="a8">
+							<div class="a9">${sight.sname}</div>
 							<div>&nbsp;时间：2018-3-6</div></td>
-						<td><img alt="" src="img/typeact2.jpg" class="a8">
-							<div class="a9">深度镇西南七日游</div>
-							<div>&nbsp;时间：2018-3-6</div></td>
-						<td><img alt="" src="img/typeact3.jpg" class="a8">
-							<div class="a9">深度镇西南七日游</div>
-							<div>&nbsp;时间：2018-3-6</div></td>
-						<td><img alt="" src="img/typeact4.jpg" class="a8">
-							<div class="a9">深度镇西南七日游</div>
-							<div>&nbsp;时间：2018-3-6</div></td>
-						<td><img alt="" src="img/typeact5.jpg" class="a8">
-							<div class="a9">深度镇西南七日游</div>
-							<div>&nbsp;时间：2018-3-6</div></td>
+						</c:forEach>
 					</tr>
 					<tr>
-						<td><img alt="" src="img/typeact6.jpg" class="a8">
-							<div class="a9">深度镇西南七日游</div>
+						<c:forEach items="${listTop10}" var="sight" begin="5" end="10" >
+							<td><img alt="" src="${sight.sphoto}" class="a8">
+							<div class="a9">${sight.sname}</div>
 							<div>&nbsp;时间：2018-3-6</div></td>
-						<td><img alt="" src="img/typeact7.jpg" class="a8">
-							<div class="a9">深度镇西南七日游</div>
-							<div>&nbsp;时间：2018-3-6</div></td>
-						<td><img alt="" src="img/typeact8.jpg" class="a8">
-							<div class="a9">深度镇西南七日游</div>
-							<div>&nbsp;时间：2018-3-6</div></td>
-						<td><img alt="" src="img/typeact9.jpg" class="a8">
-							<div class="a9">深度镇西南七日游</div>
-							<div>&nbsp;时间：2018-3-6</div></td>
-						<td><img alt="" src="img/typeact10.jpg" class="a8">
-							<div class="a9">深度镇西南七日游</div>
-							<div>&nbsp;时间：2018-3-6</div></td>
+						</c:forEach>
 					</tr>
 				</table>
 			</form>
@@ -231,30 +212,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div>
 			<hr width="100%" style="border: 1px solid #CCCCCC;">
 		</div>
-		<div class="a9-1">
-			<div><img alt="" src="img/jrtg.jpg" class="a9-3"></div>
+		<c:forEach items="${listTop3}" var="sight">
+			<div class="a9-1">
+			<div><img alt="" src="${sight.sphoto}" class="a9-3"></div>
 			<div class="a9-2">
-			<p>团购上海国际赛车场风洞亲子体验中心套餐</p>
-			<p>团购价<font color="#FF3300">￥556</font>节省230</p>
+			<p>${sight.sintro }</p>
+			<p>团购价<font color="#FF3300">￥${sight.sprice }</font>${sight.soprice-sight.soprice}</p>
 			<img src="img/qg.jpg">
 			</div>
-		</div>
-		<div class="a9-1">
-			<div><img alt="" src="img/jrtg1.png" class="a9-3"></div>
-			<div class="a9-2">
-			<p>团购上海国际赛车场风洞亲子体验中心套餐</p>
-			<p>团购价<font color="#FF3300">￥556</font>节省230</p>
-			<img src="img/qg.jpg">
-			</div>
-			</div>
-		<div class="a9-1">
-			<div><img alt="" src="img/jrtg2.png" class="a9-3"></div>
-			<div class="a9-2">
-			<p>团购上海国际赛车场风洞亲子体验中心套餐</p>
-			<p>团购价<font color="#FF3300">￥556</font>节省230</p>
-			<img src="img/qg.jpg">
-			</div>
-			</div>
+		</div> 
+		</c:forEach>
 			<br><br>
 			<br><br>
 			<br><br>
@@ -270,24 +237,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<form action="">
 				<table>
 					<tr>
-						<td><img alt="" src="img/tj1.jpg" class="a10"> <br>
-							<p class="a11">最具有代表桂林旅游线路，4天行程囊括最精华，最具有观赏的景点</p></td>
-						<td><img alt="" src="img/tj2.png" class="a10"> <br>
-							<p class="a11">最具有代表桂林旅游线路，4天行程囊括最精华，最具有观赏的景点</p></td>
-						<td><img alt="" src="img/tj3.jpg" class="a10"> <br>
-							<p class="a11">最具有代表桂林旅游线路，4天行程囊括最精华，最具有观赏的景点</p></td>
-						<td><img alt="" src="img/tj4.png" class="a10"> <br>
-							<p class="a11">最具有代表桂林旅游线路，4天行程囊括最精华，最具有观赏的景点</p></td>
+					<c:forEach items="${listTop8}" var="sight" begin="0" end="3">
+						<td>
+							<img alt="" src="${sight.sphoto }" class="a10"> <br>
+							<p class="a11">${sight.sintro}</p>
+						</td>
+					</c:forEach>
 					</tr>
 					<tr>
-						<td><img alt="" src="img/tj5.png" class="a10"> <br>
-							<p class="a11">最具有代表桂林旅游线路，4天行程囊括最精华，最具有观赏的景点</p></td>
-						<td><img alt="" src="img/tj6.png" class="a10"> <br>
-							<p class="a11">最具有代表桂林旅游线路，4天行程囊括最精华，最具有观赏的景点</p></td>
-						<td><img alt="" src="img/tj7.png" class="a10"> <br>
-							<p class="a11">最具有代表桂林旅游线路，4天行程囊括最精华，最具有观赏的景点</p></td>
-						<td><img alt="" src="img/tj8.jpg" class="a10"> <br>
-							<p class="a11">最具有代表桂林旅游线路，4天行程囊括最精华，最具有观赏的景点</p></td>
+						<c:forEach items="${listTop8}" var="sight" begin="4" end="8" >
+						<td>
+							<img alt="" src="${sight.sphoto }" class="a10"> <br>
+							<p class="a11">${sight.sintro}</p>
+						</td>
+					</c:forEach>
 					</tr>
 				</table>
 			</form>

@@ -36,6 +36,7 @@ public class SightDaoImpl extends BaseDao implements SightDao {
 				sight.setDid(res.getInt(7));
 				sight.setSday(res.getInt(8));
 				sight.setSway(res.getString(9));
+				sight.setSoprice(res.getInt(10));
 				list.add(sight);
 			}
 		} catch (SQLException e) {
@@ -56,9 +57,18 @@ public class SightDaoImpl extends BaseDao implements SightDao {
 			stmt.setInt(1,tid);
 			res=stmt.executeQuery();
 			while(res.next()){
-				Sight s=new Sight();
-				s.setSname(res.getString("sname"));
-				list.add(s);
+				Sight sight=new Sight();
+				sight.setSid(res.getInt(1));
+				sight.setSname(res.getString(2));
+				sight.setSprice(res.getInt(3));
+				sight.setSintro(res.getString(4));
+				sight.setSphoto(res.getString(5));
+				sight.setTid(res.getInt(6));
+				sight.setDid(res.getInt(7));
+				sight.setSday(res.getInt(8));
+				sight.setSway(res.getString(9));
+				sight.setSoprice(res.getInt(10));
+				list.add(sight);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -87,6 +97,7 @@ public class SightDaoImpl extends BaseDao implements SightDao {
 				sight.setDid(res.getInt(7));
 				sight.setSday(res.getInt(8));
 				sight.setSway(res.getString(9));
+				sight.setSoprice(res.getInt(10));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -94,5 +105,66 @@ public class SightDaoImpl extends BaseDao implements SightDao {
 		}
 		return sight;
 	}
-
+	@Override
+	public List<Sight> top3(int tid) {
+		List<Sight> list =new ArrayList<Sight>();
+		sql="SELECT * from sight where tid=? ORDER BY sid LIMIT 3";
+		conn=super.getConnection();
+		try {
+			stmt=conn.prepareStatement(sql);
+			stmt.setInt(1,tid);
+			res=stmt.executeQuery();
+			while(res.next()){
+				Sight sight=new Sight();
+				sight.setSid(res.getInt(1));
+				sight.setSname(res.getString(2));
+				sight.setSprice(res.getInt(3));
+				sight.setSintro(res.getString(4));
+				sight.setSphoto(res.getString(5));
+				sight.setTid(res.getInt(6));
+				sight.setDid(res.getInt(7));
+				sight.setSday(res.getInt(8));
+				sight.setSway(res.getString(9));
+				sight.setSoprice(res.getInt(10));
+				list.add(sight);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			closeAll(conn, res, stmt);
+		}
+		return list;
+	}
+	@Override
+	public List<Sight> top10(int tid) {
+		List<Sight> list =new ArrayList<Sight>();
+		sql="SELECT * from sight where tid=? ORDER BY sid LIMIT 10 ";
+		conn=super.getConnection();
+		try {
+			stmt=conn.prepareStatement(sql);
+			stmt.setInt(1,tid);
+			res=stmt.executeQuery();
+			while(res.next()){
+				Sight sight=new Sight();
+				sight.setSid(res.getInt(1));
+				sight.setSname(res.getString(2));
+				sight.setSprice(res.getInt(3));
+				sight.setSintro(res.getString(4));
+				sight.setSphoto(res.getString(5));
+				sight.setTid(res.getInt(6));
+				sight.setDid(res.getInt(7));
+				sight.setSday(res.getInt(8));
+				sight.setSway(res.getString(9));
+				sight.setSoprice(res.getInt(10));
+				list.add(sight);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			closeAll(conn, res, stmt);
+		}
+		return list;
+	}
 }

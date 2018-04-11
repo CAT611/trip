@@ -25,6 +25,18 @@ public class SightProductImpl implements SightProduct {
 		SightDao sd=new SightDaoImpl();
 		return sd.selectInfo(sname);
 	}
+
+	@Override
+	public List<Sight> top3(int tid) {
+		// TODO Auto-generated method stub
+		return sd.top3(tid);
+	}
+
+	@Override
+	public List<Sight> Top10Product(int tid) {
+		// TODO Auto-generated method stub
+		return  sd.top10(tid);
+	}
 	
 
 }
