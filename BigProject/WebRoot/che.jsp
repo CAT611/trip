@@ -171,17 +171,16 @@ tr {
 				
 				<c:set var="sum" value="0"/>
 				<c:forEach items="${list}" var="ShoppingCart">
-				<%-- <c:set var="sum" value="${sum+=ShoppingCart.cprice}" /> --%>
+				<c:set var="sum" value="${sum+ShoppingCart.cprice}" /> 
 				</c:forEach>
-				
-				
+				<c:out value="${sum }"></c:out>
 				</font>元
 				</font>
 			</div>
 			<br>
 			<br>
 			<div align="right">
-				<a href="order.jsp">
+				<a href="OrderServlet?sum=${sum }">
 				<img alt="" src="img/js.jpg">
 				</a>
 			</div>

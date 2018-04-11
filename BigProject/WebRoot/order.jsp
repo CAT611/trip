@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -111,8 +112,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</tr>
 										<tr>
 											<td>39252b36d</td>
-											<td>仰光2日游</td>
-											<td>￥765</td>
+											<td>出游</td>
+											<td>${sum}</td>
 											<td>飞机</td>
 										</tr>
 									</table>
@@ -158,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div><font color="red"><a href="">+添加游客信息</a></font> </div>
 								<br>
 								<div class="a11">
-								<img alt="" src="img/xyb.jpg">
+								<a href="success.jsp"><img alt="" src="img/xyb.jpg"></a>
 								</div>
 							</div>
 						</div>

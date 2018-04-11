@@ -36,8 +36,9 @@ public class ShoppingCartDaoImpl extends BaseDao implements ShoppingCartDao {
 
 	@Override
 	public void deleteCart() {
-		sql="delete * from shoppingcart";
+		sql="delete  from shoppingcart";
 		conn=super.getConnection();
+		System.out.println("删除表中所有数据");
 		try {
 			stmt=conn.prepareStatement(sql);
 			stmt.executeUpdate();
@@ -53,12 +54,12 @@ public class ShoppingCartDaoImpl extends BaseDao implements ShoppingCartDao {
 	public List<ShoppingCart> selectAll(int pageNow) {
 		// TODO Auto-generated method stub
 		List<ShoppingCart> list = new ArrayList<ShoppingCart>();
-		sql="select * from ShoppingCart order by cid limit (?-1)*3,3*?";
+		sql="select * from ShoppingCart order by cid limit ?,?";
 		conn=super.getConnection();
 		try {
 			stmt=conn.prepareStatement(sql);
-			stmt.setInt(1, pageNow);
-			stmt.setInt(2, pageNow);
+			stmt.setInt(1,  (pageNow-1)*3);
+			stmt.setInt(2, 3*pageNow);
 			res=stmt.executeQuery();
 			while(res.next()){
 				ShoppingCart shop = new ShoppingCart();
