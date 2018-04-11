@@ -5,8 +5,29 @@ public class Users {
 	private int uid;
 	private String uname;
 	private String upwd;
+	private String ucard;
+	private String uphone;
+	private String usex;
 	private int tid;
 	private int oid;
+	public String getUcard() {
+		return ucard;
+	}
+	public void setUcard(String ucard) {
+		this.ucard = ucard;
+	}
+	public String getUphone() {
+		return uphone;
+	}
+	public void setUphone(String uphone) {
+		this.uphone = uphone;
+	}
+	public String getUsex() {
+		return usex;
+	}
+	public void setUsex(String usex) {
+		this.usex = usex;
+	}
 	public int getUid() {
 		return uid;
 	}

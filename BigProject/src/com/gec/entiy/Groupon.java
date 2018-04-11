@@ -1,13 +1,20 @@
 package com.gec.entiy;
 
-public class Groups {
+public class Groupon {
 
 	private int gid;
 	private String gname;
+	private int oldPrice;
 	private int gprice;
 	private String gintro;
 	private String gphoto ;
 	private int gday;
+	public int getOldPrice() {
+		return oldPrice;
+	}
+	public void setOldPrice(int oldPrice) {
+		this.oldPrice = oldPrice;
+	}
 	public int getGid() {
 		return gid;
 	}
@@ -44,11 +51,11 @@ public class Groups {
 	public void setGday(int gday) {
 		this.gday = gday;
 	}
-	public Groups() {
+	public Groupon() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Groups(int gid, String gname, int gprice, String gintro,
+	public Groupon(int gid, String gname, int gprice, String gintro,
 			String gphoto, int gday) {
 		super();
 		this.gid = gid;

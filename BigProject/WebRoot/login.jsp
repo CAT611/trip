@@ -76,6 +76,20 @@ table tr td {
 </style>
 </head>
 <body>
+	<%-- <%
+		int uname=0;
+		String pwd="";
+		Cookie coo[]=request.getCookies();
+		if(coo!=null){
+			for(int i=0;i<coo.length;i++){
+				if(uname==Integer.parseInt(coo[i].getName())){
+					uname=Integer.parseInt(coo[i].getValue());	
+				}else if(pwd.equals(coo[i].getName())){
+					pwd=coo[i].getValue();
+				}
+			}
+		}
+	%>  --%>
 	<div class="a1">
 		<div class="a2">
 			<img alt="ss" src="img/logo.jpg" align="left"> <img alt="ss"
@@ -104,23 +118,23 @@ table tr td {
 		<div>
 			<img alt="" src="img/r-bg.jpg">
 			<div class="a6">
-				<form action="" method="get">
+				<form action="LoginServlet" method="post">
 					<table>
 						<tr>
 							<td style="text-align: right;">登录名</td>
-							<td style="text-align: left;"><input size="20"></td>
+							<td style="text-align: left;"><input size="20"  name="uname" value="${cookie.username.value }"></td>
 						</tr>
 						<tr>
 							<td style="text-align: right;">密&nbsp;码</td>
-							<td style="text-align: left;"><input type="password" size="20"></td>
+							<td style="text-align: left;"><input type="password" size="20"  name="upwd" value="${cookie.upwd.value }"></td>
 						</tr>
 						<tr>
 							<td style="text-align: right;"></td>
-							<td style="text-align: left;"><input type="radio">30天内自动登录</td>
+							<td style="text-align: left;"><input type="checkbox" value="unLogin" name="unLogin">30天内自动登录</td>
 						</tr>
 						<tr>
 							<td style="text-align: right;"></td>
-							<td style="text-align: left;"><img alt="" src="img/login-b.jpg"></td>
+							<td style="text-align: left;"><input type="submit" src="img/login-b.jpg"></td>
 						</tr>
 					</table>
 				</form>

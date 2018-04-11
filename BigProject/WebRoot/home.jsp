@@ -1,22 +1,24 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'home.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	
+<head>
+<base href="<%=basePath%>">
+
+<title>途乐行首页</title>
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
+
 <style type="text/css">
 ul {
 	margin: 0 auto;
@@ -36,6 +38,11 @@ font {
 
 a:hover {
 	color: red;
+}
+
+a {
+	text-decoration: none;
+	color: black;
 }
 
 body {
@@ -170,11 +177,11 @@ body {
 	background: url('img/con2-r.jpg');
 	width: 720px;
 	height: 40px;
-	float:left;
+	float: left;
 	text-align: center;
 	position: relative;
 	margin-left: 5px;
-	margin-top:-5px;
+	margin-top: -5px;
 }
 
 .a17 {
@@ -193,7 +200,7 @@ body {
 }
 </style>
 </head>
-  
+
 <body>
 	<div>
 		<div class="a1">
@@ -206,16 +213,16 @@ body {
 		<div class="a3">
 			<div class="a4">
 				<ul>
-					<li>首页</li>
+					<li><a href="HomeServlet">首页</a></li>
 					<li><img src="img/t1.jpg"></li>
-					<li>境外游</li>
+					<li><a href="outside.jsp">境外游</a></li>
 					<li><img src="img/t1.jpg"></li>
-					<li>境内游</li>
+					<li><a href="inside.jsp">境内游</a></li>
 					<li><img src="img/t1.jpg"></li>
-					<li>热门游</li>
+					<li><a>热门游</a></li>
 					<li><img src="img/t1.jpg"></li>
-					<li>团购</li>
-					<li><img alt="" src="img/che.jpg"></li>
+					<li><a href="GroupShopping.jsp">团购</a></li>
+					<li><a href="che.jsp"><img alt="" src="img/che.jpg"></a></li>
 				</ul>
 			</div>
 		</div>
@@ -232,19 +239,20 @@ body {
 					<div>
 						<img alt="" src="img/jn.jpg">
 					</div>
-					<div class="a6-1">境内游</div>
+					<div class="a6-1">
+						<a href="inside.jsp">境内游</a>
+					</div>
 					<div class="a6-2">
 						<table style="text-align: left; size: 6; line-height: 20px">
-							<tr>
-								<td>凤凰古城</td>
-								<td>云南大理</td>
-								<td>昆明</td>
-							</tr>
-							<tr>
-								<td>丽江</td>
-								<td>西双版纳</td>
-								<td>九寨沟</td>
-							</tr>
+							<c:forEach items="${listInside}" var="inside" varStatus="status">
+								<c:if test="${status.count%3==1}">
+									<tr>
+								</c:if>
+								<td><a href="DetialsServlet?sname=${inside.sname}">${inside.sname}</a></td>
+								<c:if test="${status.count%3==0}">
+									</tr>
+								</c:if>
+							</c:forEach>
 						</table>
 					</div>
 
@@ -254,51 +262,46 @@ body {
 					<div class="a6-1">境外游</div>
 					<div class="a6-2">
 						<table style="text-align: left; size: 6; line-height: 20px">
-							<tr>
-								<td>奧地利</td>
-								<td>马尔代夫</td>
-								<td>夏威夷</td>
-							</tr>
-							<tr>
-								<td>美国</td>
-								<td>瑞士</td>
-								<td>英国</td>
-							</tr>
+							<c:forEach items="${listOutside}" var="inside" varStatus="status">
+								<c:if test="${status.count%3==1}">
+									<tr>
+								</c:if>
+								<td><a href="DetialsServlet?sname=${inside.sname}">${inside.sname}</a></td>
+								<c:if test="${status.count%3==0}">
+									</tr>
+								</c:if>
+							</c:forEach>
 						</table>
 					</div>
-
 					<div>
 						<img alt="" src="img/hd.jpg">
 					</div>
 					<div class="a6-1">海岛游</div>
 					<div class="a6-2">
 						<table style="text-align: left; size: 6; line-height: 20px">
-							<tr>
-								<td>北海道</td>
-								<td>巴厘岛</td>
-								<td>曼谷</td>
-							</tr>
-							<tr>
-								<td>普吉岛</td>
-								<td>塞班岛</td>
-								<td>香港岛</td>
-							</tr>
+							<c:forEach items="${listIslands}" var="inside" varStatus="status">
+								<c:if test="${status.count%3==1}">
+									<tr>
+								</c:if>
+								<td><a href="DetialsServlet?sname=${inside.sname}">${inside.sname}</a></td>
+								<c:if test="${status.count%3==0}">
+									</tr>
+								</c:if>
+							</c:forEach>
 						</table>
 					</div>
-
 					<img alt="" src="img/zj.jpg">
 					<div class="a6-2">
 						<table style="text-align: left; size: 6; line-height: 20px">
-							<tr>
-								<td>张家界</td>
-								<td>武当山</td>
-								<td>黄山</td>
-							</tr>
-							<tr>
-								<td>木兰天地</td>
-								<td>庐山</td>
-								<td>农耕年华</td>
-							</tr>
+							<c:forEach items="${listByself}" var="inside" varStatus="status">
+								<c:if test="${status.count%3==1}">
+									<tr>
+								</c:if>
+								<td><a href="DetialsServlet?sname=${inside.sname}">${inside.sname}</a></td>
+								<c:if test="${status.count%3==0}">
+									</tr>
+								</c:if>
+							</c:forEach>
 						</table>
 					</div>
 
@@ -308,10 +311,12 @@ body {
 				<img alt="" src="img/tg4.jpg">
 			</div>
 			<div class="a7">
-				<img alt="" src="img/dl.jpg"> <img alt="" src="img/zc.jpg">
+				<a href="login.jsp"><img alt="" src="img/dl.jpg"></a> <a
+					href="register.jsp?nextID=${nextID}"><img alt="" src="img/zc.jpg"></a>
 			</div>
 			<div class="a8">
 				<font>96%</font>滿意度 <br> 已有 <font>2596874</font>人预定出游
+				欢迎<font>${user.uname}</font>登录
 			</div>
 			<div class="a9">
 				<table class="a10">
@@ -359,20 +364,15 @@ body {
 				</div>
 				<div>
 					<table class="a15">
-						<tr>
-							<td>古琴台</td>
-							<td>黄鹤楼</td>
-							<td>海洋世界</td>
-						</tr>
-						<tr>
-							<td>武汉东湖</td>
-							<td>木兰天池</td>
-							<td>汉正街</td>
-						</tr>
-						<tr>
-							<td>坝子岭</td>
-							<td>武汉欢乐谷</td>
-						</tr>
+						<c:forEach items="${listOne}" var="inside" varStatus="status">
+								<c:if test="${status.count%3==1}">
+									<tr>
+								</c:if>
+								<td><a href="DetialsServlet?sname=${inside.sname}">${inside.sname}</a></td>
+								<c:if test="${status.count%3==0}">
+									</tr>
+								</c:if>
+							</c:forEach>
 					</table>
 				</div>
 
@@ -381,21 +381,15 @@ body {
 				</div>
 				<div>
 					<table class="a15">
-						<tr>
-							<td>澳门</td>
-							<td>烟台</td>
-							<td>仰光</td>
-						</tr>
-						<tr>
-							<td>约旦</td>
-							<td>伊朗</td>
-							<td>德国</td>
-						</tr>
-						<tr>
-							<td>缅甸</td>
-							<td>希腊</td>
-							<td></td>
-						</tr>
+						<c:forEach items="${listTwo}" var="inside" varStatus="status">
+								<c:if test="${status.count%3==1}">
+									<tr>
+								</c:if>
+								<td><a href="DetialsServlet?sname=${inside.sname}">${inside.sname}</a></td>
+								<c:if test="${status.count%3==0}">
+									</tr>
+								</c:if>
+							</c:forEach>
 					</table>
 				</div>
 				<div>
@@ -403,20 +397,15 @@ body {
 				</div>
 				<div>
 					<table class="a15">
-						<tr>
-							<td>北京</td>
-							<td>上海</td>
-							<td>加拿大</td>
-						</tr>
-						<tr>
-							<td>香港</td>
-							<td>海南</td>
-							<td>马尔代夫</td>
-						</tr>
-						<tr>
-							<td>韩国</td>
-							<td>福建</td>
-						</tr>
+						<c:forEach items="${listThree}" var="inside" varStatus="status">
+								<c:if test="${status.count%3==1}">
+									<tr>
+								</c:if>
+								<td><a href="DetialsServlet?sname=${inside.sname}">${inside.sname}</a></td>
+								<c:if test="${status.count%3==0}">
+									</tr>
+								</c:if>
+							</c:forEach>
 					</table>
 				</div>
 				<div>
@@ -508,7 +497,8 @@ body {
 	</div>
 	<p class="c1">许可证编号：125842154 鄂ICP备125478966</p>
 	<p class="c1">
-		<a href="">隐私保护</a>|<a href="">友情链接</a>|<a href="">网站地图</a>|<a href="">友情链接</a>|<a href="">商务合作</a>
+		<a href="">隐私保护</a>|<a href="">友情链接</a>|<a href="">网站地图</a>|<a href="">友情链接</a>|<a
+			href="">商务合作</a>
 	</p>
 </body>
 </html>
