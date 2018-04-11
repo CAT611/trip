@@ -92,7 +92,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="a6">
 			<div class="a7">
 				<!-- 左上边距20px -->
-
 				<div>
 					<font color="#009962">【多重优惠+超值赠送】品质全景，张家界，凤凰，天门山，宝峰湖纯玩双飞五日游</font>
 					<img alt="" src="img/tjcp.jpg">

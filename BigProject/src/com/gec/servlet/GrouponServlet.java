@@ -2,11 +2,16 @@ package com.gec.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.gec.entiy.Groupon;
+import com.gec.services.Group;
+import com.gec.services.impl.GroupImpl;
 
 public class GrouponServlet extends HttpServlet {
 
@@ -56,8 +61,24 @@ public class GrouponServlet extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		
-		request.getRequestDispatcher("details.jsp").forward(request, response);
+		int pageNum=1;//第一页团购显示
+		Group g=new GroupImpl();
+		int num = g.getcount();
+		String newpageNum=request.getParameter("pageNum");
+		if(newpageNum!=null){
+			if(Integer.parseInt(newpageNum)<0){
+				pageNum=0;
+			}else if(Integer.parseInt(newpageNum)>=num-1){
+				pageNum=num-1;
+			}else{
+				pageNum = Integer.parseInt(newpageNum);
+			}
+		}
+		List<Groupon> list = g.getGroup(pageNum);
+		request.setAttribute("list", list);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("num", num);
+		request.getRequestDispatcher("outside.jsp").forward(request, response);
 	}
 
 	/**

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -48,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div>
 			<form action="">
 				<table>
-					<tr>
+					<!-- <tr>
 						<td><img alt="" src="img/tg01.jpg"> <br>
 							<p>全国联保德国2日</p>
 							<p>简介：德国是一个中欧联邦制会议国家
@@ -111,13 +112,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<p>
 								<font color="grey" size="1">已有两人参与</font>
 							</p></td>
+					</tr> -->
+					<tr>
+						<c:forEach var="tuan" items="${list}" begin="0" end="2">
+						<td><img alt="" src="${tuan.gphoto }"> <br>
+							<p>${tuan.gname }</p>
+							<p>${tuan.gintro }</p>
+							<p>
+								<font color="red" size="3">团购价${tuan.gprice }</font><font color="grey"
+									size="1">原价${tuan.oldPrice }</font>
+							</p>
+							<p>
+								<font color="grey" size="1">已有两人参与</font>
+							</p></td>
+							</c:forEach>
+					</tr>
+					<tr>
+						<c:forEach var="tuan" items="${list}" begin="3" end="5">
+						<td><img alt="" src="${tuan.gphoto }"> <br>
+							<p>${tuan.gname }</p>
+							<p>${tuan.gintro }</p>
+							<p>
+								<font color="red" size="3">团购价${tuan.gprice }</font><font color="grey"
+									size="1">原价${tuan.oldPrice }</font>
+							</p>
+							<p>
+								<font color="grey" size="1">已有两人参与</font>
+							</p></td>
+							</c:forEach>				
 					</tr>
 				</table>
 			</form>
 		</div>
 	</div>
 	<div style="text-align: center;">
-		<a href="">首页</a> <a href="">上一页</a> <a href="">下一页</a> <a href="">尾页</a>
+		<a href="GrouponServlet?pageNum=1">首页</a> <a href="GrouponServlet?pageNum=${pageNum-1 }">上一页</a> <a href="GrouponServlet?pageNum=${pageNum+1 }">下一页</a> <a href="GrouponServlet?pageNum=2">尾页</a>
 	</div>
 	<div>
 		<hr style="border: 1px solid grey" width="100%">
