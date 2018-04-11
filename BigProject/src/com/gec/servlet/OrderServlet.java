@@ -8,17 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.gec.entiy.Groupon;
-import com.gec.entiy.Sight;
-import com.gec.services.Group;
-import com.gec.services.impl.GroupImpl;
+import com.gec.services.Cart;
+import com.gec.services.impl.CartImpl;
 
-public class DetialsServlet extends HttpServlet {
+public class OrderServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public DetialsServlet() {
+	public OrderServlet() {
 		super();
 	}
 
@@ -42,7 +40,7 @@ public class DetialsServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doPost(request, response);
+		doPost(request,response);
 	}
 
 	/**
@@ -59,16 +57,15 @@ public class DetialsServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String sname = new String(request.getParameter("sname").getBytes("ISO-8859-1"), "UTF-8"); 
-		Group gp=new GroupImpl();
-		Groupon group=gp.selectDetails(sname);
-		String str=group.getGphoto();
-		String [] gphoto=str.split(",");
-		System.out.println(gphoto[0]+gphoto[1]+gphoto[2]+gphoto[3]);
-		request.setAttribute("gphoto", gphoto);
-		request.setAttribute("group", group);
-		request.setAttribute("sname", sname);
-		request.getRequestDispatcher("details.jsp").forward(request,response);
+		String sum = request.getParameter("sum");
+		//删除购物车表中的内容
+		Cart ca = new CartImpl();
+		//将所有信息添加到订单表中
+		
+		
+		ca.delete();
+		request.setAttribute("sum", sum);
+		request.getRequestDispatcher("order.jsp").forward(request, response);
 	}
 
 	/**

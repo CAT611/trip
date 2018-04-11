@@ -35,6 +35,8 @@ public class GrouponDaoImpl extends BaseDao implements GrouponDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			closeAll(conn, res, stmt);
 		}
 		return group;
 	}

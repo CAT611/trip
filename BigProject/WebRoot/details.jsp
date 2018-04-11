@@ -73,16 +73,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="a3">
 		<div class="a4">
 			<ul>
-				<li>首页</li>
-				<li><img src="img/t1.jpg"></li>
-				<li>境外游</li>
-				<li><img src="img/t1.jpg"></li>
-				<li>境内游</li>
-				<li><img src="img/t1.jpg"></li>
-				<li>热门游</li>
-				<li><img src="img/t1.jpg"></li>
-				<li>团购</li>
-				<li><img alt="" src="img/che.jpg"></li>
+				<li><a href="HomeServlet">首页</a></li>
+					<li><img src="img/t1.jpg"></li>
+					<li><a href="inside.jsp">境外游</a></li>
+					<li><img src="img/t1.jpg"></li>
+					<li><a href="">境内游</a></li>
+					<li><img src="img/t1.jpg"></li>
+					<li><a href="">热门游</a></li>
+					<li><img src="img/t1.jpg"></li>
+					<li><a href="outside.jsp">团购</a></li>
+					<li><a href="che.jsp"><img alt="" src="img/che.jpg"></a></li>
 			</ul>
 		</div>
 	</div>
@@ -105,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- 大图展示区 -->
 					<img alt="" src="${gphoto[0]}" width="430px" height="270px">
 					<div class="a8">
-						<form action="CartServlet" method="post">
+						<form action="CartServlet?sname=${sname}" method="post">
 							<table>
 								<tr>
 									<td>涂乐行价：${group.oldPrice}</td>

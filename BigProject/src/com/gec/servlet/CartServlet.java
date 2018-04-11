@@ -2,11 +2,19 @@ package com.gec.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.gec.entiy.Groupon;
+import com.gec.entiy.ShoppingCart;
+import com.gec.services.Cart;
+import com.gec.services.Group;
+import com.gec.services.impl.CartImpl;
+import com.gec.services.impl.GroupImpl;
 
 public class CartServlet extends HttpServlet {
 
@@ -57,7 +65,19 @@ public class CartServlet extends HttpServlet {
 		String  che = request.getParameter("che");
 		String  order = request.getParameter("order");
 		if(che!=null){
-			System.out.println(che+"1111111");
+			
+			String sname = new String(request.getParameter("sname").getBytes("ISO-8859-1"), "UTF-8"); 
+			Group gp=new GroupImpl();
+			Groupon group=gp.selectDetails(sname);
+			int gprice=group.getGprice();
+			String gintro=group.getGintro();
+			Cart cart=new CartImpl();
+			//填入购物车
+			cart.insert(sname, gprice, gintro);
+			//分页查询购物车的所有数据
+			int pageNow=1;
+			List<ShoppingCart> list = cart.selectAll(pageNow);
+			request.setAttribute("list", list);
 			request.getRequestDispatcher("che.jsp").forward(request, response);
 			return ;
 		}
