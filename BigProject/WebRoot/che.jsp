@@ -164,7 +164,7 @@ tr {
 				style="height: 1px; border: none; border-top: 1px dashed #0066CC;" />
 			<br>
 			<div style="text-align: center;">
-				<a href="">首页</a> <a href="">上一页</a> <a href="">下一页</a> <a href="">尾页</a>
+				<a href="CartServlet?pageNow=1">首页</a> <a href="CartServlet?pageNow=${pageNow-1}">上一页</a> <a href="CartServlet?pageNow=${pageNow+1}">下一页</a> <a href="CartServlet?pageNow=${page }">尾页</a>
 			</div>
 			<div style="text-align: right;">
 				<font size="5">应付金额<font color=" red">

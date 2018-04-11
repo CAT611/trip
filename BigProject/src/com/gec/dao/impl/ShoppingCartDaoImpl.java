@@ -59,14 +59,14 @@ public class ShoppingCartDaoImpl extends BaseDao implements ShoppingCartDao {
 		try {
 			stmt=conn.prepareStatement(sql);
 			stmt.setInt(1,  (pageNow-1)*3);
-			stmt.setInt(2, 3*pageNow);
+			stmt.setInt(2, 3);
 			res=stmt.executeQuery();
 			while(res.next()){
 				ShoppingCart shop = new ShoppingCart();
 				shop.setCid(res.getInt(1));
-				shop.setCintro(res.getString(4));
 				shop.setCname(res.getString(2));
 				shop.setCprice(res.getInt(3));
+				shop.setCintro(res.getString(4));
 				list.add(shop);
 			}
 		} catch (SQLException e) {
@@ -89,6 +89,7 @@ public class ShoppingCartDaoImpl extends BaseDao implements ShoppingCartDao {
 			res=stmt.executeQuery();
 			while(res.next()){
 				count=res.getInt(1);
+				count=count%3==0?count/3:(count/3)+1;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

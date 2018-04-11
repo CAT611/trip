@@ -2,32 +2,23 @@ package com.gec.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.gec.entiy.Sight;
-import com.gec.entiy.Users;
-import com.gec.services.Login;
-import com.gec.services.SightProduct;
-import com.gec.services.impl.LoginImpl;
-import com.gec.services.impl.SightProductImpl;
+import com.gec.services.Order;
+import com.gec.services.impl.OrderImpl;
 
-public class HomeServlet extends HttpServlet {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class SuccessServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public HomeServlet() {
+	public SuccessServlet() {
 		super();
 	}
 
@@ -51,7 +42,6 @@ public class HomeServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		doPost(request, response);
 	}
 
@@ -67,28 +57,15 @@ public class HomeServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
-		Login lo=new LoginImpl();
-		int nextID=lo.nextID();
-		request.setAttribute("nextID", nextID);
-		SightProduct sp=new SightProductImpl();
-		List<Sight> listInside=sp.Top6Product(1);
-		request.setAttribute("listInside", listInside);
-		List<Sight> listOutside=sp.Top6Product(2);
-		request.setAttribute("listOutside", listOutside);
-		List<Sight> listIslands=sp.Top6Product(3);
-		request.setAttribute("listIslands", listIslands);
-		List<Sight> listByself=sp.Top6Product(4);
-		request.setAttribute("listByself", listByself);
-		List<Sight> listOne=sp.Top8Product(5);
-		request.setAttribute("listOne", listOne);
-		List<Sight> listTwo=sp.Top8Product(6);
-		request.setAttribute("listTwo", listTwo);
-		List<Sight> listThree=sp.Top8Product(7);
-		request.setAttribute("listThree", listThree);
-		
-		request.getRequestDispatcher("home.jsp").forward(request, response);
+			String sum = request.getParameter("sum");
+			Order o=new OrderImpl();
+			int oprice=Integer.parseInt(sum);
+			int uid=(Integer) request.getSession().getAttribute("uid");
+			Date day=new Date();    
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+			String format = df.format(day);
+			o.addOrder(oprice, format, uid);
+			request.getRequestDispatcher("success.jsp").forward(request,response);
 	}
 
 	/**

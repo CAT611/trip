@@ -76,20 +76,6 @@ table tr td {
 </style>
 </head>
 <body>
-	<%-- <%
-		int uname=0;
-		String pwd="";
-		Cookie coo[]=request.getCookies();
-		if(coo!=null){
-			for(int i=0;i<coo.length;i++){
-				if(uname==Integer.parseInt(coo[i].getName())){
-					uname=Integer.parseInt(coo[i].getValue());	
-				}else if(pwd.equals(coo[i].getName())){
-					pwd=coo[i].getValue();
-				}
-			}
-		}
-	%>  --%>
 	<div class="a1">
 		<div class="a2">
 			<img alt="ss" src="img/logo.jpg" align="left"> <img alt="ss"

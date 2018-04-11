@@ -64,20 +64,34 @@ public class CartServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		String  che = request.getParameter("che");
 		String  order = request.getParameter("order");
-		if(che!=null){
-			
-			String sname = new String(request.getParameter("sname").getBytes("ISO-8859-1"), "UTF-8"); 
-			Group gp=new GroupImpl();
-			Groupon group=gp.selectDetails(sname);
-			int gprice=group.getGprice();
-			String gintro=group.getGintro();
-			Cart cart=new CartImpl();
-			//填入购物车
-			cart.insert(sname, gprice, gintro);
-			//分页查询购物车的所有数据
+		if(che!=null||request.getParameter("pageNow")!=null){
 			int pageNow=1;
+			Cart cart=new CartImpl();
+			if(request.getParameter("sname")!=null){
+				String sname = new String(request.getParameter("sname").getBytes("ISO-8859-1"), "UTF-8"); 
+				Group gp=new GroupImpl();
+				Groupon group=gp.selectDetails(sname);
+				int gprice=group.getGprice();
+				String gintro=group.getGintro();
+				//填入购物车
+				cart.insert(sname, gprice, gintro);
+			}
+			//分页查询购物车的所有数据
+			int page=cart.selectCount();
+			String newPage=request.getParameter("pageNow");
+			if(newPage!=null){
+				if(Integer.parseInt(newPage)<=1){
+					pageNow=1;
+				}else if(Integer.parseInt(newPage)>=page){
+					pageNow=page;
+				}else{
+					pageNow=Integer.parseInt(newPage);
+				}
+			}
 			List<ShoppingCart> list = cart.selectAll(pageNow);
 			request.setAttribute("list", list);
+			request.setAttribute("pageNow", pageNow);
+			request.setAttribute("page", page);
 			request.getRequestDispatcher("che.jsp").forward(request, response);
 			return ;
 		}

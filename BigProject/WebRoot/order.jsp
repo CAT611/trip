@@ -159,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div><font color="red"><a href="">+添加游客信息</a></font> </div>
 								<br>
 								<div class="a11">
-								<a href="success.jsp"><img alt="" src="img/xyb.jpg"></a>
+								<a href="SuccessServlet?sum=${sum}"><img alt="" src="img/xyb.jpg"></a>
 								</div>
 							</div>
 						</div>

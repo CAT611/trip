@@ -2,6 +2,8 @@ package com.gec.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.gec.services.Cart;
+import com.gec.services.Order;
 import com.gec.services.impl.CartImpl;
+import com.gec.services.impl.OrderImpl;
 
 public class OrderServlet extends HttpServlet {
 
@@ -60,9 +64,6 @@ public class OrderServlet extends HttpServlet {
 		String sum = request.getParameter("sum");
 		//删除购物车表中的内容
 		Cart ca = new CartImpl();
-		//将所有信息添加到订单表中
-		
-		
 		ca.delete();
 		request.setAttribute("sum", sum);
 		request.getRequestDispatcher("order.jsp").forward(request, response);

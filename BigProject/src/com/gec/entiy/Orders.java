@@ -7,7 +7,7 @@ public class Orders {
 	private int oid;
 	private int did;
 	private int oprice;
-	private Date odate;
+	private String odate;
 	private int uid;
 	public Orders() {
 		super();
@@ -31,10 +31,10 @@ public class Orders {
 	public void setOprice(int oprice) {
 		this.oprice = oprice;
 	}
-	public Date getOdate() {
+	public String getOdate() {
 		return odate;
 	}
-	public void setOdate(Date odate) {
+	public void setOdate(String odate) {
 		this.odate = odate;
 	}
 	public int getUid() {
@@ -43,7 +43,7 @@ public class Orders {
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
-	public Orders(int oid, int did, int oprice, Date odate, int uid) {
+	public Orders(int oid, int did, int oprice, String odate, int uid) {
 		super();
 		this.oid = oid;
 		this.did = did;

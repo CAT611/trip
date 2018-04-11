@@ -316,7 +316,7 @@ body {
 			</div>
 			<div class="a8">
 				<font>96%</font>滿意度 <br> 已有 <font>2596874</font>人预定出游
-				欢迎<font>${user.uname}</font>登录
+				欢迎<font>${sessionScope.uid}</font>登录
 			</div>
 			<div class="a9">
 				<table class="a10">
@@ -428,66 +428,18 @@ body {
 			</div>
 			<div class="a17">
 				<table>
+				<c:forEach items="${listInside}" var="sights">
 					<tr>
-						<td class="a18"><img src="img/cp1.jpg" width="200px"
-							height="72px" /><br /> <font size="2">产品编号123456</font></td>
+						<td class="a18"><img src="${sights.sphoto}" width="200px"
+							height="72px" /><br /> <font size="2">产品编号${sights.sid}</font></td>
 						<td class="a19" height="40px"><p>
-								<font size="3" color="#0D2DB6">[5日游]&nbsp;海南双飞五日游&nbsp;&nbsp;交通工具（飞机）</font><br />
-								<font size="1">简介：1晚分界洲海景住宿，蜜月专享，恋恋海豚湾</font><br /> <font
-									size="1">本线路已有<font color="#FD6C00">2</font>人出游
+								<font size="3" color="#0D2DB6">[${sights.sday}日游]&nbsp;${sights.sname}双飞${sights.sday}日游&nbsp;&nbsp;交通工具（${sights.sway}）</font><br />
+								<font size="1">简介：${sights.sintro}</font><br />
+								<font size="1">本线路已有<font color="#FD6C00">${sights.sday}</font>人出游
 								</font></td>
 						<td><font color="#A8583D">￥1664元/每人</font></td>
 					</tr>
-					<tr>
-						<td class="a18"><img src="img/cp1.jpg" width="200px"
-							height="72px" /><br /> <font size="2">产品编号123456</font></td>
-						<td class="a19" height="40px"><p>
-								<font size="3" color="#0D2DB6">[6日游]&nbsp;昆大丽双飞6日游&nbsp;交通工具（飞机）</font><br />
-								<font size="1">简介：[清明]<昆大丽双飞6日游>约惠云南，1晚温泉酒店，减100</font><br />
-								<font size="1">本线路已有<font color="#FD6C00">56</font>人出游
-								</font></td>
-						<td><font color="#A8583D">￥1664元/每人</font></td>
-					</tr>
-					<tr>
-						<td class="a18"><img src="img/cp1.jpg" width="200px"
-							height="72px" /><br /> <font size="2">产品编号123456</font></td>
-						<td class="a19" height="40px"><p>
-								<font size="3" color="#0D2DB6">[1日游]&nbsp;武汉欢乐谷1日游&nbsp;交通工具（自驾）</font><br />
-								<font size="1">简介：中国文化公园第一连锁品牌以,旨在为不同的城市，带来同样的欢乐</font><br /> <font
-									size="1">本线路已有<font color="#FD6C00">56</font>人出游
-								</font></td>
-						<td><font color="#A8583D">￥3517元/每人</font></td>
-					</tr>
-					<tr>
-						<td class="a18"><img src="img/cp1.jpg" width="200px"
-							height="72px" /><br /> <font size="2">产品编号123456</font></td>
-						<td class="a19" height="40px"><p>
-								<font size="3" color="#0D2DB6">[4日游]&nbsp;厦门双飞4日游&nbsp;&nbsp;交通工具（飞机）</font><br />
-								<font size="1">简介：住1晚鼓浪屿特色旅馆，1天自由活动</font><br /> <font size="1">本线路已有<font
-									color="#FD6C00">5144</font>人出游
-								</font></td>
-						<td><font color="#A8583D">￥1199元/每人</font></td>
-					</tr>
-					<tr>
-						<td class="a18"><img src="img/cp1.jpg" width="200px"
-							height="72px" /><br /> <font size="2">产品编号123456</font></td>
-						<td class="a19" height="40px"><p>
-								<font size="3" color="#0D2DB6">[2日游]&nbsp;香港迪士尼2日游&nbsp;&nbsp;交通工具（飞机）</font><br />
-								<font size="1">简介：香港迪士尼乐园,是世界上的第五个迪士尼乐园</font><br /> <font
-									size="1">本线路已有<font color="#FD6C00">1526</font>人出游
-								</font></td>
-						<td><font color="#A8583D">￥170元/每人</font></td>
-					</tr>
-					<tr>
-						<td class="a18"><img src="img/cp1.jpg" width="200px"
-							height="72px" /><br /> <font size="2">产品编号123456</font></td>
-						<td class="a19" height="40px"><p>
-								<font size="3" color="#0D2DB6">[5日游]&nbsp;海南三亚5日游&nbsp;&nbsp;交通工具（飞机）</font><br />
-								<font size="1">简介：<海南三亚国光豪生5日自动游></font><br />
-								<font size="1">本线路已有<font color="#FD6C00">569</font>人出游
-								</font></td>
-						<td><font color="#A8583D">￥55元/每人</font></td>
-					</tr>
+				</c:forEach>
 				</table>
 			</div>
 		</div>
