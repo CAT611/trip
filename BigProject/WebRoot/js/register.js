@@ -24,13 +24,14 @@ function isChinaName(name) {
 	} 
 	 
  function check(){
+	 
 	 if(isPwd($('#newPwd').val(),$('#pwd').val())==false){
 		 $('#pwdMes').text("密码两次输入不一致");
 	 }
 	 if(isChinaName($.trim($('#uname').val())) == false){
 		 $('#unameMes').text("名称输入错误");
 	 }
-	 if(isPhoneNo($.trim($('#uphones').val()) == false)) {
+	 if(isPhoneNo($.trim($('#uphone').val()))== false) {
 		 $('#uphoneMes').text("电话输入错误");
 	 }
 	 if(isCardNo($.trim($('#ucard').val())) == false) {
