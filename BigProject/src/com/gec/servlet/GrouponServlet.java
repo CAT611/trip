@@ -66,10 +66,10 @@ public class GrouponServlet extends HttpServlet {
 		int num = g.getcount();
 		String newpageNum=request.getParameter("pageNum");
 		if(newpageNum!=null){
-			if(Integer.parseInt(newpageNum)<0){
-				pageNum=0;
-			}else if(Integer.parseInt(newpageNum)>=num-1){
-				pageNum=num-1;
+			if(Integer.parseInt(newpageNum)<=1){
+				pageNum=1;
+			}else if(Integer.parseInt(newpageNum)>=num){
+				pageNum=num;
 			}else{
 				pageNum = Integer.parseInt(newpageNum);
 			}

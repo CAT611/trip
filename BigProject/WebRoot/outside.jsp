@@ -140,13 +140,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<font color="grey" size="1">已有两人参与</font>
 							</p></td>
 							</c:forEach>				
-					</tr>
+					</tr> 
 				</table>
 			</form>
 		</div>
 	</div>
 	<div style="text-align: center;">
-		<a href="GrouponServlet?pageNum=1">首页</a> <a href="GrouponServlet?pageNum=${pageNum-1 }">上一页</a> <a href="GrouponServlet?pageNum=${pageNum+1 }">下一页</a> <a href="GrouponServlet?pageNum=2">尾页</a>
+		<a href="GrouponServlet?pageNum=1">首页</a> <a href="GrouponServlet?pageNum=${pageNum-1 }">上一页</a> <a href="GrouponServlet?pageNum=${pageNum+1 }">下一页</a> <a href="GrouponServlet?pageNum=${num }">尾页</a>
 	</div>
 	<div>
 		<hr style="border: 1px solid grey" width="100%">
