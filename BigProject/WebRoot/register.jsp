@@ -8,7 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
+    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="js/register.js"></script>
     <title>注册页面</title>
 <link rel="shortcut icon" href="img/che.jpg">
 <style type="text/css">
@@ -87,6 +88,10 @@ body {
 .a10 {
 	text-align: center;
 }
+.mes{
+	text-align: left;
+	color:red;
+}
 </style>
 </head>
 
@@ -118,7 +123,7 @@ body {
 	<div class="a5">
 		<div class="a6">会员注册</div>
 		<div class="a7">
-			<form action="RegisterServlet" method="post">
+			<form action="RegisterServlet" method="post" onsubmit="return check()">
 				<table>
 					<tr>
 						<td style="text-align: right;">用户账号</td>
@@ -126,19 +131,19 @@ body {
 					</tr>
 					<tr>
 						<td style="text-align: right;">设置密码</td>
-						<td><input name="upwd"></td>
+						<td><input name="upwd" id="upwd"></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">确认密码</td>
-						<td><input name="newPwd"></td>
+						<td><input type="password" name="newPwd" id="newPwd"><span id="pwdMes" class="mes"></span></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">用户姓名</td>
-						<td><input name="uname"></td>
+						<td><input name="uname" id="uname"><span id="unameMes" class="mes"></span></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">身份证号</td>
-						<td><input name="ucard"></td>
+						<td><input name="ucard" id="ucard"><span id="ucardMes" class="mes"></span></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">性别</td>
@@ -147,7 +152,7 @@ body {
 					</tr>
 					<tr>
 						<td style="text-align: right;">手机号码</td>
-						<td><input name="uphone"></td>
+						<td><input name="uphone" id="uphones"><span id="uphoneMes" class="mes"></span></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;">校验码</td>
@@ -155,11 +160,11 @@ body {
 					</tr>
 					<tr>
 						<td style="text-align: right;"></td>
-						<td><input type="submit" src="img/but2.jpg"></td>
+						<td><input type="submit" ></td>
 					</tr>
 					<tr>
 						<td style="text-align: right;"></td>
-						<td><input type="radio" name="rule"><a href="rule.html">涂乐行旅游服务会员条款</a>
+						<td><input type="checkbox" name="rule"><a href="rule.html">涂乐行旅游服务会员条款</a>
 						</td>
 					</tr>
 				</table>

@@ -7,10 +7,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <link rel="stylesheet" type="text/css" href="css/top.css">
+<head>
+<base href="<%=basePath%>">
+<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="js/inside.js"></script>
+<link rel="stylesheet" type="text/css" href="css/top.css">
 <title>境内游</title>
 <style type="text/css">
 .a5 {
@@ -43,6 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	font-size: 15px;
 	height: 30px;
 	padding: 0.5px;
+	z-index:5;
 }
 
 .a8 {
@@ -83,6 +85,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 .a11 {
 	width: 240px;
+}
+.a6-2 ul li {
+	position: absolute;
+	overflow: hidden;
+	float: right;	
+	margin-left: -40px;
+	margin-top: 10px;
 }
 </style>
 </head>
@@ -152,24 +161,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<!-- 错峰出游 -->
 		<div class="a6-1">
-			<div>
-				<img alt="" src="img/jn2.jpg">
+			<div class="a6-2">
+				<ul class="imgs">
+        			<li><a id="img1" href="#"><img class="img1" alt="" src="img/jn1.jpg"></a></li>
+        		 <!-- 	<li><a href="#"><img class="img2" alt="" src="img/jn2.jpg"></a></li>
+        			<li><a href="#"><img class="img3" alt="" src="img/jn3.jpg"></a></li>
+        			<li><a href="#"><img class="img4" alt="" src="img/jn4.jpg"></a></li>
+        			<li><a href="#"><img class="img5" alt="" src="img/jn5.jpg"></a></li>
+        			<li><a href="#"><img class="img6" alt="" src="img/jn6.jpg"></a></li>
+        			<li><a href="#"><img class="img7" alt="" src="img/jn7.jpg"></a></li>
+        			<li><a href="#"><img class="img8" alt="" src="img/jn8.jpg"></a></li>
+        			<li><a href="#"><img class="img9" alt="" src="img/jn9.jpg"></a></li>
+        			<li><a href="#"><img class="img10" alt="" src="img/jn10.jpg"></a></li> -->
+    			</ul>
 			</div>
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			<!-- 出游地点 -->
 			<div class="a7">
 				<form action="">
 					<table>
 						<tr>
-							<td>丽江千古情</td>
-							<td>错峰出游行</td>
-							<td>妇女节特集</td>
-							<td>三亚自由行</td>
-							<td>踏青至福建</td>
-							<td>新云南心旅</td>
-							<td>东北特色游</td>
-							<td>张家界风情</td>
-							<td>三亚特价超</td>
-							<td>洛阳牡丹节</td>
+							<td  class="mov1">丽江千古情</td>
+							<td  class="mov2">错峰出游行</td>
+							<td  class="mov3">妇女节特集</td>
+							<td  class="mov4">三亚自由行</td>
+							<td  class="mov5">踏青至福建</td>
+							<td  class="mov6">新云南心旅</td>
+							<td  class="mov7">东北特色游</td>
+							<td  class="mov8">张家界风情</td>
+							<td  class="mov9">三亚特价超</td>
+							<td  class="mov10">洛阳牡丹节</td>
 						</tr>
 					</table>
 				</form>
