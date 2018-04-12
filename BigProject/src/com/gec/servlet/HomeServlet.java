@@ -10,11 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.gec.entiy.Shopwindow;
 import com.gec.entiy.Sight;
 import com.gec.entiy.Users;
 import com.gec.services.Login;
+import com.gec.services.Shopwindows;
 import com.gec.services.SightProduct;
 import com.gec.services.impl.LoginImpl;
+import com.gec.services.impl.ShopwindowsImpl;
 import com.gec.services.impl.SightProductImpl;
 
 public class HomeServlet extends HttpServlet {
@@ -87,7 +90,9 @@ public class HomeServlet extends HttpServlet {
 		request.setAttribute("listTwo", listTwo);
 		List<Sight> listThree=sp.Top8Product(7);
 		request.setAttribute("listThree", listThree);
-		
+		Shopwindows shop=new ShopwindowsImpl();
+		List<String> list = shop.getShops();
+		request.setAttribute("list", list);
 		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 

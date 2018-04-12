@@ -19,6 +19,14 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 
+<link rel="stylesheet" href="/css/liMarquee.css">
+<script src="/js/jquery.liMarquee.js"></script>
+<script src="/js/jquery-2.1.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('.a12').liMarquee();
+	})
+</script>
 <style type="text/css">
 ul {
 	margin: 0 auto;
@@ -109,7 +117,12 @@ body {
 .a7 {
 	float: left;
 	display: inline;
-	margin-left: 5px;
+	margin-left: -93px;
+}
+.a7-1 {
+	float: left;
+	display: inline;
+	margin-left: 10px;
 }
 
 .a8 {
@@ -146,6 +159,7 @@ body {
 	float: left;
 	margin-left: 280px;
 	margin-top: -138px;
+	overflow: hidden;
 }
 
 .a13 {
@@ -307,10 +321,17 @@ body {
 
 				</div>
 			</div>
-			<div class="a7">
-				<img alt="" src="img/tg4.jpg">
+			<div class="a7" >
+				<%-- <img alt="" src="${chu.adr }"> --%>
+				<ul>
+					<li style="display: none" id="chuone"><img src="img/tg.jpg"></li>
+					<li style="" id="chutwo"><img src="img/tg2.jpg"></li>
+					<li style="display: none;opacity" id="chuthree"><img src="img/tg3.jpg"></li>
+					<li style="display: none;opacity" id="chufour"><img src="img/tg4.jpg"></li>
+				</ul>
+				
 			</div>
-			<div class="a7">
+			<div class="a7-1">
 				<a href="login.jsp"><img alt="" src="img/dl.jpg"></a> <a
 					href="register.jsp?nextID=${nextID}"><img alt="" src="img/zc.jpg"></a>
 			</div>
@@ -321,10 +342,10 @@ body {
 			<div class="a9">
 				<table class="a10">
 					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
+						<td><a href="#chuone">1</a></td>
+						<td><a href="#chutwo">2</a></td>
+						<td><a href="#chuthree">3</a></td>
+						<td><a href="#chufour">4</a></td>
 					</tr>
 				</table>
 			</div>
@@ -333,26 +354,29 @@ body {
 					<img alt="" src="img/tgj.jpg">
 				</div>
 			</div>
-			<div class="a12">
-				<table>
-					<tr>
-						<td height="95px"><img src=img/scroll4.jpg width="160px"
-							height="90px" //>
-							<p style="line-height: 0px">毛里求斯七日游</p>
-							<p style="line-height: 0px">10369起原价10000</p></td>
-						<td height="95px"><img src=img/scroll5.jpg width="160px"
-							height="90px" //>
-							<p style="line-height: 0px">阿联酋六日游</p>
-							<p style="line-height: 0px">10369起原价10000</p></td>
-						<td><img src=img/scroll6.jpg width="160px" height="90px" //>
-							<p style="line-height: 0px">巴厘岛六日游</p>
-							<p style="line-height: 0px">10369起原价10000</p></td>
-						<td><img src=img/scroll7.jpg width="160px" height="90px" //>
-							<p style="line-height: 0px">香港四日游</p>
-							<p style="line-height: 0px">10369起原价10000</p></td>
-					</tr>
-
-				</table>
+			<div class="a12" id="box">
+				<marquee scrolldelay="150" aligh="top" onMouseOut="this.start()"
+					onMouseOver="this.stop()">
+					<table id="tabone">
+						<tr>
+							<td height="95px"><img src=img/scroll4.jpg width="160px"
+								height="90px" />
+								<p style="line-height: 0px">毛里求斯七日游</p>
+								<p style="line-height: 0px">10369起原价10000</p></td>
+							<td height="95px"><img src=img/scroll5.jpg width="160px"
+								height="90px" />
+								<p style="line-height: 0px">阿联酋六日游</p>
+								<p style="line-height: 0px">10369起原价10000</p></td>
+							<td><img src=img/scroll6.jpg width="160px" height="90px" />
+								<p style="line-height: 0px">巴厘岛六日游</p>
+								<p style="line-height: 0px">10369起原价10000</p></td>
+							<td><img src=img/scroll7.jpg width="160px" height="90px" />
+								<p style="line-height: 0px">香港四日游</p>
+								<p style="line-height: 0px">10369起原价10000</p></td>
+						</tr>
+					</table>
+					<table id="tabtwo"></table>
+				</marquee>
 			</div>
 			<div class="a13">
 				<div>
