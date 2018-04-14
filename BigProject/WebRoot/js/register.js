@@ -1,5 +1,5 @@
 function isPwd(pwd,newpwd){
-	if(pwd==newpwd){
+	if(pwd.equals(newpwd)){
 		return true;
 	}else{
 		return false;

@@ -250,7 +250,7 @@ body {
 					<li><a href="">热门游</a></li>
 					<li><img src="img/t1.jpg"></li>
 					<li><a href="GrouponServlet">团购</a></li>
-					<li><a href="che.jsp"><img alt="" src="img/che.jpg"></a></li>
+					<li><a href="CartServlet?che=购物车"><img alt="" src="img/che.jpg"></a></li>
 				</ul>
 			</div>
 		</div>

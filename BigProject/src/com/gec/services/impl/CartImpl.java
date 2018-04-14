@@ -39,4 +39,16 @@ public class CartImpl implements Cart {
 		return sp.selectAll();
 	}
 
+	@Override
+	public void delete(int cid) {
+		// TODO Auto-generated method stub
+		sp.deleteCart(cid);
+	}
+
+	@Override
+	public int selectPrice(int cid) {
+		// TODO Auto-generated method stub
+		return sp.selectPrice(cid);
+	}
+
 }

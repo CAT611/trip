@@ -11,6 +11,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" type="text/css" href="css/top.css">
 <title>购物车</title>
 <style type="text/css">
+a:hover {
+	color: red;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
 .a5 {
 	width: 1000px;
 	height: 1000px;
@@ -108,7 +116,7 @@ tr {
 	<div class="a3">
 		<div class="a4">
 			<ul>
-				<li><a href="HomeServlet">首页</a></li>
+					<li><a href="HomeServlet">首页</a></li>
 					<li><img src="img/t1.jpg"></li>
 					<li><a href="InsideServlet">境外游</a></li>
 					<li><img src="img/t1.jpg"></li>
@@ -117,8 +125,8 @@ tr {
 					<li><a href="">热门游</a></li>
 					<li><img src="img/t1.jpg"></li>
 					<li><a href="GrouponServlet">团购</a></li>
-					<li><a href="che.jsp"><img alt="" src="img/che.jpg"></a></li>
-			</ul>
+					<li><a href="CartServlet?che=购物车"><img alt="" src="img/che.jpg"></a></li>
+				</ul>
 		</div>
 	</div>
 	<br>
@@ -152,8 +160,8 @@ tr {
 								</div>
 							</td>
 							<td class="a16"><font color="#FF0000">${ShoppingCart.cprice}</font></td>
-							<td class="a16"><font class="a10-1">下单</font></td>
-							<td class="a16"></td>
+							<td class="a16"><font class="a10-1"><a href="OrderServlet?cid=${ShoppingCart.cid}">下单</a></font></td>
+							<td class="a16"><a href="CartServlet?cid=${ShoppingCart.cid}">删除</a></td>
 						</tr>
 						</c:forEach>
 					</table>
@@ -180,7 +188,7 @@ tr {
 			<br>
 			<br>
 			<div align="right">
-				<a href="OrderServlet?sum=${sum }">
+				<a href="OrderServlet?sum=${sum}">
 				<img alt="" src="img/js.jpg">
 				</a>
 			</div>

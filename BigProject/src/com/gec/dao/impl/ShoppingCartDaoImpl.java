@@ -126,4 +126,44 @@ public class ShoppingCartDaoImpl extends BaseDao implements ShoppingCartDao {
 		return list;
 	}
 
+	@Override
+	public void deleteCart(int cid) {
+		// TODO Auto-generated method stub
+		sql="delete  from shoppingcart where cid =?";
+		conn=super.getConnection();
+		System.out.println("删除表中所有数据");
+		try {
+			stmt=conn.prepareStatement(sql);
+			stmt.setInt(1, cid);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			closeAll(conn, res, stmt);
+		}
+	}
+
+	@Override
+	public int selectPrice(int cid) {
+		// TODO Auto-generated method stub
+		int price=0;
+		sql="select cprice from ShoppingCart where cid=?";
+		conn=super.getConnection();
+		try {
+			stmt=conn.prepareStatement(sql);
+			stmt.setInt(1, cid);
+			res=stmt.executeQuery();
+			while(res.next()){
+				price=res.getInt("cprice");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			closeAll(conn, res, stmt);
+		}
+		return price;
+	}
+
 }

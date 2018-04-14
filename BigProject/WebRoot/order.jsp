@@ -13,6 +13,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>订单页面</title>
 <link href="css/top.css" rel="stylesheet" type="text/css">
 <style type="text/css">
+a:hover {
+	color: red;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
 .a5 {
 	width: 945px;
 	height: 555px;
@@ -67,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="a3">
 		<div class="a4">
 			<ul>
-				<li><a href="HomeServlet">首页</a></li>
+					<li><a href="HomeServlet">首页</a></li>
 					<li><img src="img/t1.jpg"></li>
 					<li><a href="InsideServlet">境外游</a></li>
 					<li><img src="img/t1.jpg"></li>
@@ -76,8 +84,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><a href="">热门游</a></li>
 					<li><img src="img/t1.jpg"></li>
 					<li><a href="GrouponServlet">团购</a></li>
-					<li><a href="che.jsp"><img alt="" src="img/che.jpg"></a></li>
-			</ul>
+					<li><a href="CartServlet?che=购物车"><img alt="" src="img/che.jpg"></a></li>
+				</ul>
 		</div>
 	</div>
 	<br>

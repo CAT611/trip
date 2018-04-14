@@ -12,6 +12,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>My JSP 'view.jsp' starting page</title>
  <link href="css/top.css" rel="stylesheet" type="text/css">
 <style type="text/css">
+a:hover {
+	color: red;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
 .a5 {
 	width: 1003px;
 	margin: 0 auto;
@@ -73,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="a3">
 		<div class="a4">
 			<ul>
-				<li><a href="HomeServlet">首页</a></li>
+					<li><a href="HomeServlet">首页</a></li>
 					<li><img src="img/t1.jpg"></li>
 					<li><a href="InsideServlet">境外游</a></li>
 					<li><img src="img/t1.jpg"></li>
@@ -82,8 +90,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><a href="">热门游</a></li>
 					<li><img src="img/t1.jpg"></li>
 					<li><a href="GrouponServlet">团购</a></li>
-					<li><a href="che.jsp"><img alt="" src="img/che.jpg"></a></li>
-			</ul>
+					<li><a href="CartServlet?che=购物车"><img alt="" src="img/che.jpg"></a></li>
+				</ul>
 		</div>
 	</div>
 	<br>
@@ -93,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="a7">
 				<!-- 左上边距20px -->
 				<div>
-					<font color="#009962">【多重优惠+超值赠送】品质全景，张家界，凤凰，天门山，宝峰湖纯玩双飞五日游</font>
+					<font color="#009962">${group.gintro}</font>
 					<img alt="" src="img/tjcp.jpg">
 					<img alt="" src="img/fk.jpg">
 					<img alt="" src="img/gty.jpg" align="right">
@@ -119,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<td>出游天数：${group.gday}天</td>
 								</tr>
 								<tr>
-									<td>出游人数：已有0人出游此路线</td>
+									<td>出游人数：已有0人出游此路线(从订单表中查询name的数量)</td>
 								</tr>
 								<tr>
 									<td>提前报名：建议提前一天报名</td>

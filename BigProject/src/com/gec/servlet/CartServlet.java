@@ -64,7 +64,9 @@ public class CartServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		String  che = request.getParameter("che");
 		String  order = request.getParameter("order");
-		if(che!=null||request.getParameter("pageNow")!=null){
+		String cid = request.getParameter("cid");
+		System.out.println(cid);
+		if(che!=null||request.getParameter("pageNow")!=null||cid!=null){
 			int pageNow=1;
 			Cart cart=new CartImpl();
 			if(request.getParameter("sname")!=null){
@@ -75,6 +77,10 @@ public class CartServlet extends HttpServlet {
 				String gintro=group.getGintro();
 				//填入购物车
 				cart.insert(sname, gprice, gintro);
+			}
+			if(cid!=null){
+				Cart ca = new CartImpl();
+				ca.delete(Integer.parseInt(cid));
 			}
 			//分页查询购物车的所有数据
 			int page=cart.selectCount();

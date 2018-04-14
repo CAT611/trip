@@ -61,9 +61,18 @@ public class OrderServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
+		String cid = request.getParameter("cid");
 		String sum = request.getParameter("sum");
-		//删除购物车表中的内容
 		Cart ca = new CartImpl();
+		if(cid!=null){
+			int price=ca.selectPrice(Integer.parseInt(cid));
+			System.out.println(price);
+			ca.delete(Integer.parseInt(cid));
+			request.setAttribute("sum", price);
+			request.getRequestDispatcher("order.jsp").forward(request, response);
+			return ;
+		}
+			//删除购物车表中的内容
 		ca.delete();
 		request.setAttribute("sum", sum);
 		request.getRequestDispatcher("order.jsp").forward(request, response);
