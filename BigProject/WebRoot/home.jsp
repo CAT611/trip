@@ -20,13 +20,7 @@
 <meta http-equiv="description" content="This is my page">
 
 <link rel="stylesheet" href="/css/liMarquee.css">
-<script src="/js/jquery.liMarquee.js"></script>
 <script src="/js/jquery-2.1.4.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$('.a12').liMarquee();
-	})
-</script>
 <style type="text/css">
 ul {
 	margin: 0 auto;
@@ -119,10 +113,17 @@ body {
 	display: inline;
 	margin-left: -93px;
 }
+
+.a7 ul li{
+   float:left;
+   margin-left:px;
+   margin-top:px;
+   position: absolute;
+}
 .a7-1 {
 	float: left;
 	display: inline;
-	margin-left: 10px;
+	margin-left: 550px;
 }
 
 .a8 {
@@ -211,6 +212,19 @@ body {
 
 .a19 {
 	width: 350px;
+}
+
+#demo {
+	float: left;
+	width: 800%;
+}
+
+#demo1 {
+	float: left;
+}
+
+#demo2 {
+	float: left;
 }
 </style>
 </head>
@@ -323,14 +337,47 @@ body {
 			</div>
 			<div class="a7" >
 				<%-- <img alt="" src="${chu.adr }"> --%>
-				<ul>
-					<li style="display: none" id="chuone"><img src="img/tg.jpg"></li>
-					<li style="" id="chutwo"><img src="img/tg2.jpg"></li>
-					<li style="display: none;opacity" id="chuthree"><img src="img/tg3.jpg"></li>
-					<li style="display: none;opacity" id="chufour"><img src="img/tg4.jpg"></li>
+				<ul id="imglist">
+					<li id="img1"><img src="img/tg.jpg"></li>
+					<li id="img2"><img src="img/tg2.jpg"></li>
+					<li id="img3"><img src="img/tg3.jpg"></li>
+					<li id="img4"><img src="img/tg4.jpg"></li>
 				</ul>
-				
 			</div>
+			<script type="text/javascript">
+				window.onload=function(){
+					 var aimg=document.getElementById("imglist"); 
+					var aimglist=aimg.getElementsByTagName("li");
+					Array.prototype.forEach.call(aimglist,function(img){
+						var timer=null;
+						alpha=0.3;
+						function startMove(obj,iTarget){
+							clearInterval(timer);
+							timer=setInterval(function(){
+								var speed=0;
+								if(alpha<iTarget){
+									speed=0.1;
+								}else{
+									speed=-0.1;
+								}
+								if(alpha==iTarget){
+									clearInterval(timer);
+								}else{
+									alpha=(alpha*10+speed*10)/10;
+									obj.style.opacity=alpha;
+									obj.style.filter="alpha(opacity="+alpha*10+")";
+								}
+							},30);
+						}
+						img.onmouseover=function(){
+							startMove(this,1);
+						};
+						img.onmouseout=function(){
+							startMove(this,0);
+						};
+					})
+				}
+			</script>
 			<div class="a7-1">
 				<a href="login.jsp"><img alt="" src="img/dl.jpg"></a> <a
 					href="register.jsp?nextID=${nextID}"><img alt="" src="img/zc.jpg"></a>
@@ -355,8 +402,8 @@ body {
 				</div>
 			</div>
 			<div class="a12" id="box">
-				<marquee scrolldelay="150" aligh="top" onMouseOut="this.start()"
-					onMouseOver="this.stop()">
+					<div id="demo">
+						<div id="demo1">
 					<table id="tabone">
 						<tr>
 							<td height="95px"><img src=img/scroll4.jpg width="160px"
@@ -375,9 +422,31 @@ body {
 								<p style="line-height: 0px">10369起原价10000</p></td>
 						</tr>
 					</table>
-					<table id="tabtwo"></table>
-				</marquee>
+					</div>
+						<div id="demo2"></div>
+					</div>
 			</div>
+			<script>
+			var speed = 50; //数字越大速度越慢 
+			var tab = document.getElementById("box");
+			var tab1 = document.getElementById("demo1");
+			var tab2 = document.getElementById("demo2");
+			tab2.innerHTML = tab1.innerHTML;
+			function Marquee() {
+				if (tab2.offsetWidth - tab.scrollLeft <= 0)
+					tab.scrollLeft -= tab1.offsetWidth;
+				else {
+					tab.scrollLeft++;
+				}
+			}
+			var MyMar = setInterval(Marquee, speed);
+			tab.onmouseover = function() {
+				clearInterval(MyMar);
+			};
+			tab.onmouseout = function() {
+				MyMar = setInterval(Marquee, speed);
+			};
+		</script>
 			<div class="a13">
 				<div>
 					<table id="a1">
