@@ -33,4 +33,10 @@ public class CartImpl implements Cart {
 		return sp.selectCount();
 	}
 
+	@Override
+	public List<ShoppingCart> selectAll() {
+		// TODO Auto-generated method stub
+		return sp.selectAll();
+	}
+
 }

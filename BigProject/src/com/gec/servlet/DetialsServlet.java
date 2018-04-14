@@ -63,9 +63,10 @@ public class DetialsServlet extends HttpServlet {
 		Group gp=new GroupImpl();
 		Groupon group=gp.selectDetails(sname);
 		String str=group.getGphoto();
-		String [] gphoto=str.split(",");
-		System.out.println(gphoto[0]+gphoto[1]+gphoto[2]+gphoto[3]);
-		request.setAttribute("gphoto", gphoto);
+		if(str!=null){
+			String [] gphoto=str.split(",");
+			request.setAttribute("gphoto", gphoto);
+		}
 		request.setAttribute("group", group);
 		request.setAttribute("sname", sname);
 		request.getRequestDispatcher("details.jsp").forward(request,response);

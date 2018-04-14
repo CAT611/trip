@@ -61,7 +61,7 @@ public class GrouponServlet extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		int pageNum=1;//µÚÒ»Ò³ÍÅ¹ºÏÔÊ¾
+		int pageNum=1;//ï¿½ï¿½Ò»Ò³ï¿½Å¹ï¿½ï¿½ï¿½Ê¾
 		Group g=new GroupImpl();
 		int num = g.getcount();
 		String newpageNum=request.getParameter("pageNum");

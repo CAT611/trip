@@ -108,13 +108,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<ul>
 				<li><a href="HomeServlet">首页</a></li>
 					<li><img src="img/t1.jpg"></li>
-					<li><a href="inside.jsp">境外游</a></li>
+					<li><a href="InsideServlet">境外游</a></li>
 					<li><img src="img/t1.jpg"></li>
-					<li><a >境内游</a></li>
+					<li><a href="">境内游</a></li>
 					<li><img src="img/t1.jpg"></li>
-					<li><a >热门游</a></li>
+					<li><a href="">热门游</a></li>
 					<li><img src="img/t1.jpg"></li>
-					<li><a href="outside.jsp">团购</a></li>
+					<li><a href="GrouponServlet">团购</a></li>
 					<li><a href="che.jsp"><img alt="" src="img/che.jpg"></a></li>
 			</ul>
 		</div>

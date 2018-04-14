@@ -89,7 +89,9 @@ public class CartServlet extends HttpServlet {
 				}
 			}
 			List<ShoppingCart> list = cart.selectAll(pageNow);
+			List<ShoppingCart> list1 = cart.selectAll();
 			request.setAttribute("list", list);
+			request.setAttribute("list1", list1);
 			request.setAttribute("pageNow", pageNow);
 			request.setAttribute("page", page);
 			request.getRequestDispatcher("che.jsp").forward(request, response);
